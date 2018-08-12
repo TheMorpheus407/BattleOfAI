@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Battle of AI</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
+
+    <!--CSS Libs-->
+    <!--font awesome v5.0.6-->
+    <link href="css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" href="css/members.css">
+
+</head>
+<body>
+
+<header>
+    <div class="nav-wrapper">
+        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav waves-effect waves-light circle hide-on-large-only">
+            <i class="material-icons">menu</i>
+        </a>
+    </div>
+    <div class="container">
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li class="logo"><a href="index.html" id="logo-container">BATTLE OF AI</a></li>
+            <li><div class="divider"></div></li>
+            <li class="bold"><a href="members.html" class="waves-effect waves-red">Recent Games</a></li>
+            <!--<li class="bold"><a href="leaderboard.html" class="waves-effect waves-red">Leaderboard</a> </li>-->
+            <li class="bold"><a href="stats.html" class="waves-effect waves-red">Statistics</a> </li>
+            <li class="bold active"><a href="settings.html" class="waves-effect waves-red">Settings</a> </li>
+        </ul>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <form id="changeUserForm" class="col s12 section" action="javascript:change_user_submit()">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="username" id="username" disabled value="Username" type="text"/>
+                    <label for="username">Username</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="email" name="email" value="Email" type="email"/>
+                    <label for="email">Email</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="oldpass" value="" name="oldpass" type="password" required/>
+                    <label for="oldpass">Old Password</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="newpass" value=""  name="newpass" type="password" class="validate"/>
+                    <label for="newpass">New Password</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="newpass2" value="" name="newpass2" type="password" class="validate"/>
+                    <label for="newpass2">Retype your new password</label>
+                </div>
+
+                <div class="col s6">
+                    <input id="newsletter" name="newsletter" value="YES" checked="checked" type="checkbox" class="filled-in-box"/>
+                    <label for="newsletter">Newsletter</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <button id="changeUserDetails" class="btn waves-effect waves-light" type="submit" name="action">
+                        Submit Changes <i class="material-icons right">send</i>
+                    </button>
+                </div>
+                <div class="col s12">
+                    <p id="message" style="display: none"></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<footer></footer>
+
+
+<script defer src="js/fontawesome506.js"></script>
+
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/Chart.bundle.js"></script>
+
+<script src="js/settings.js"></script>
+<script src="js/util.js"></script>
+<script src="js/members.js"></script>
+<script src="js/footer.js"></script>
+<script src="js/gamesUtil.js"></script>
+<script src="js/changeUser.js"></script>
+
+</body>
+</html>
