@@ -14,8 +14,8 @@ class UserDTO(db.Model):
     registration_date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     email_token_generated_time = db.Column(db.DateTime)
 
-    token = db.Column(db.String(255))
-    session_token = db.Column(db.String(255))
+    token = db.Column(db.String(300))
+    session_token = db.Column(db.String(300))
     token_generated_time = db.Column(db.DateTime)
 
     def __init__(self, username, email, password, newsletter):
