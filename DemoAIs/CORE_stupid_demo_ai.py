@@ -2,8 +2,10 @@ import requests
 import time
 import json
 
-url = "http://0.0.0.0:1337/api/"
-account_management_url = "http://0.0.0.0:1338/api/"
+url = "https://games.battleofai.net/api"
+# url = "http://0.0.0.0:1337/api/"
+account_management_url = "https://iam.battleofai.net/api/"
+# account_management_url = "http://0.0.0.0:1338/api/"
 
 #CAREFUL!!! NEVER PUSH CODE TO GITHUB ETC WHEN IT CONTAINS YOUR PASSWORD!!!!!
 username = "Morpheus2" #TODO CHANGE!
