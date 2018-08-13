@@ -10,7 +10,7 @@ class UserDTO(db.Model):
     password = db.Column(db.LargeBinary)
     newsletter = db.Column(db.Boolean)
     email_verified = db.Column(db.Boolean)
-    email_token = db.Column(db.String(255))
+    email_token = db.Column(db.String(300))
     registration_date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     email_token_generated_time = db.Column(db.DateTime)
 
