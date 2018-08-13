@@ -16,11 +16,12 @@ $(document).ready(function () {
             success: function (data, status, xhr) {
                 var node = document.createElement("DIV");
                 if (data["success"]){
+                    document.getElementById("message").style.display = "none";
                     var main_node = document.getElementById("message");
                     var textnode = document.createTextNode(data["message"] + " You will be redirected to the login page in 3 seconds.");
                     main_node.appendChild(textnode);
                     setTimeout(function () {
-                        window.location = window.location.host + "/index.html";
+                        window.location = window.location.protocol + "//" + window.location.host + "/index.html";
                     }, 3000);
                 }
             }
