@@ -154,7 +154,7 @@ $(function () {
                 setCookie("token", data["token"]);
                 setCookie("session_token", data["session_token"]);
                 loggedIn();
-                window.location = window.location.host + "/members.html";
+                window.location = window.location.protocol + "//" + window.location.host + "/members.html";
             }
         });
         return false;
