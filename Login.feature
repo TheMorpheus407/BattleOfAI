@@ -10,7 +10,7 @@ And I receive an email which contains a verify-link
 
 Scenario: Logging In
 Given I have opened the browser and am viewing the "Login"-Site
-And i have entered my credentials
+And I have entered my credentials
 When I click on "Login"
 Then I receive a cookie which lets me access my account page
 //Cookie consists of userid, token, sessiontoken
