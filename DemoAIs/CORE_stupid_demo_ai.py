@@ -2,7 +2,7 @@ import requests
 import time
 import json
 
-url = "https://games.battleofai.net/api"
+url = "https://games.battleofai.net/api/"
 # url = "http://0.0.0.0:1337/api/"
 account_management_url = "https://iam.battleofai.net/api/"
 # account_management_url = "http://0.0.0.0:1338/api/"
