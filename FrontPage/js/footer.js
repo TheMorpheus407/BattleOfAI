@@ -17,7 +17,7 @@ $(document).ready(function () {
                     <a href="https://www.facebook.com/themorpheustutorials" class="facebook"><i class="fab fa-facebook"></i></a>\
                     <a href="https://github.com/TheMorpheus407" class="instagram"><i class="fab fa-github"></i></a>\
                     <a href="https://www.patreon.com/user?u=5322110" class="google-plus"><i class="fab fa-patreon"></i></a>\
-                    <a href="https://discord.gg/xW7k3xd" class="google-plus"><i class="fab fa-discord"></i></a>\
+                    <a href="https://discord.gg/BnYZ8XS" class="google-plus"><i class="fab fa-discord"></i></a>\
                     <a href="http://amzn.to/2slBSgH" class="google-plus"><i class="fab fa-amazon"></i></a>\
                     <a href="https://www.paypal.me/TheMorpheus" class="google-plus"><i class="fab fa-paypal"></i></a>\
                 </div>\
