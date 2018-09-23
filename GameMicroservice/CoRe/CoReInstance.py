@@ -1,5 +1,6 @@
 from GameMicroservice.DomainModel.GameInstance import GameInstance
 
+
 class CoReInstance(GameInstance):
     GAME_NAME = "Core"
     AMOUNT_PLAYERS = 2

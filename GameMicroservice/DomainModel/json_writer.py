@@ -1,8 +1,12 @@
-import json
+import json, os
 
 save_folder = 'Games_Archive/'
 
+
 def write_to_file(id, game_instance):
+    if not os.path.isdir(save_folder):
+        os.makedirs(save_folder)
+
     my_json = {
         'id': id,
         'active_player': game_instance.active_player,

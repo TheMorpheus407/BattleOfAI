@@ -4,7 +4,8 @@ from flask import request
 import string
 
 from AccountManagement.API.api_var import api
-from AccountManagement.API.api_def import user_data, userdetails, new_user, successful, login_data, token, email_address, email_token, reset_password
+from AccountManagement.API.api_def import user_data, userdetails, new_user, successful, login_data, token, \
+    email_address, email_token, reset_password
 
 from AccountManagement.Database.UserDTO import UserDTO
 from AccountManagement.Database.db import db
@@ -13,6 +14,7 @@ from AccountManagement.Utils.Sendmail import send_registration_mail, send_pwforg
 from AccountManagement.Utils.CleanUp import delete_trash_accounts
 
 accnamespace = Namespace('iam/', description='Identity and Access Management for Battle of AI')
+
 
 @accnamespace.route('/register')
 class RegisterResource(Resource):
@@ -29,6 +31,7 @@ class RegisterResource(Resource):
         send_registration_mail(user.email, user.email_token)
         return {'success': True, 'message': 'Please check your emails.'}
 
+
 @accnamespace.route('/verifyEmail')
 class VerifyEmail(Resource):
     @api.expect(email_token)
@@ -40,6 +43,7 @@ class VerifyEmail(Resource):
             return {'success': False, 'message': 'User not found or email already verified.'}
         user.verify_email()
         return {'success': True, 'message': 'User successfully verified.'}
+
 
 @accnamespace.route('/login')
 class LoginResource(Resource):
@@ -56,6 +60,7 @@ class LoginResource(Resource):
             token, sesstoken = user.generate_tokens()
         return {'userid': user.id, 'token': token, 'session_token': sesstoken}
 
+
 @accnamespace.route('/forgotPassword')
 class ForgotPasswordResource(Resource):
     @api.expect(email_address)
@@ -64,6 +69,7 @@ class ForgotPasswordResource(Resource):
         if user is not None:
             user.gen_pwforgot_password()
             send_pwforgot_email(user.email, user.email_token)
+
 
 @accnamespace.route('/resetPassword')
 class ResetPasswordResource(Resource):
@@ -76,6 +82,7 @@ class ResetPasswordResource(Resource):
         user.change_password(request.json['new_password'])
         return {'success': True, 'message': 'Password successfully changed You can now go back and log in.'}
 
+
 @accnamespace.route('/validateToken')
 class ValidateTokenResource(Resource):
     @api.expect(token)
@@ -85,6 +92,7 @@ class ValidateTokenResource(Resource):
         if user is not None and user.check_token(request.json['token'], request.json['session_token']):
             return {'success': True, 'message': 'Logged in successfully.'}
         return {'success': False, 'message': 'Your token is invalid. Consider logging in again.'}
+
 
 @accnamespace.route('/refreshToken')
 class RefreshTokenResource(Resource):
@@ -97,6 +105,7 @@ class RefreshTokenResource(Resource):
             return {'userid': user.id, 'token': token, 'session_token': sesstoken}
         return None
 
+
 @accnamespace.route('/updateUser')
 class UpdateUserResource(Resource):
     @api.expect(userdetails, validate=False)
@@ -105,16 +114,28 @@ class UpdateUserResource(Resource):
         print(request.json)
         id = request.json['token']['userid']
         user = UserDTO.query.filter_by(id=id).first()
-        failed_msg = {'success': False, 'message': 'Something went wrong, couldn\'t verify you. Please log in again.'}
-        if user is None or not user.check_token(request.json['token']['token'], request.json['token']['session_token']):
+        failed_msg = {
+            'success': False,
+            'message': 'Something went wrong, couldn\'t verify you. Please log in again.'
+        }
+        if user is None:
+            return failed_msg
+        if not user.check_token(request.json['token']['token'], request.json['token']['session_token']):
             return failed_msg
         if not user.check_password(request.json['old_password']) or not user.is_verified():
             return failed_msg
         if 'new_password' in request.json and 'new_password2' in request.json:
             new_password = request.json['new_password']
             new_password2 = request.json['new_password2']
-            if new_password is not None and (new_password2 is None or any(char in new_password for char in string.digits) or any(char in new_password for char in string.ascii_uppercase) or any(char in new_password for char in string.punctuation) or new_password == new_password2):
-                return {'success': False, 'message': 'Please check your password again, seems like they either did not match or your password is too weak.'}
+            if new_password is not None and (
+                    new_password2 is None or any(char in new_password for char in string.digits) or any(
+                    char in new_password for char in string.ascii_uppercase) or any(
+                    char in new_password for char in string.punctuation) or new_password == new_password2):
+                return {
+                    'success': False,
+                    'message': 'Please check your password again, seems like they either did not match' + \
+                               'or your password is too weak.'
+                }
             if new_password is not None:
                 user.change_password(new_password)
         if 'email' in request.json and request.json['email'] is not None:
@@ -122,6 +143,7 @@ class UpdateUserResource(Resource):
         if 'newsletter' in request.json and request.json['newsletter'] is not None:
             user.set_newsletter(request.json['newsletter'])
         return {'success': True, 'message': 'Updated all your data accordingly.'}
+
 
 @accnamespace.route('/getUserByID/<int:id>')
 class GetUserByIdResource(Resource):
@@ -131,4 +153,8 @@ class GetUserByIdResource(Resource):
         user = UserDTO.query.filter_by(id=id).first()
         if user is None or not user.check_token(request.json['token'], request.json['session_token']):
             return None
-        return {'username': user.username, 'email': user.email, 'newsletter': user.newsletter}
+        return {
+            'username': user.username,
+            'email': user.email,
+            'newsletter': user.newsletter
+        }

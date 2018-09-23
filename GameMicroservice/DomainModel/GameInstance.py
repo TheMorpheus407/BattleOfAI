@@ -2,8 +2,11 @@ from GameMicroservice.Database.GameDTO import GameDTO
 import json
 from GameMicroservice.DomainModel.json_writer import write_to_file, save_folder
 
+
 class GameInstance:
-    '''Overwrite these attributes'''
+    """
+    Overwrite these attributes
+    """
     GAME_NAME = "Interface"
     AMOUNT_PLAYERS = 2
 
@@ -22,21 +25,29 @@ class GameInstance:
             self.board = self.history[-1]
 
     def initialize_board(self):
-        '''Overwrite this method'''
+        """
+        Overwrite this method
+        """
         return []
 
     def turn(self, vars):
-        '''Overwrite this method'''
+        """
+        Overwrite this method
+        """
         self.board.append(self.active_player)
 
     def valid(self, vars):
-        '''Overwrite this method'''
+        """
+        Overwrite this method
+        """
         if vars == []:
             return True
         return False
 
     def won_check(self):
-        '''Overwrite this method'''
+        """
+        Overwrite this method
+        """
         if len(self.history) > 10:
             self.won(self.active_player)
             return True
@@ -72,10 +83,10 @@ class GameInstance:
         self.active_player = (self.active_player+1)%self.AMOUNT_PLAYERS
 
     def turn_wrapper(self, vars):
-        '''
+        """
         :param vars:Variables for making a turn in the game
         :return:If the game is unfinished
-        '''
+        """
         if not self.valid(vars):
             self.won((self.active_player+1)%2)
             self.game_dto.abort_game()

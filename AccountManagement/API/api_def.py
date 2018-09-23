@@ -29,11 +29,17 @@ email_address = api.model('The email address of the user', {
 })
 
 email_token = api.model('Token to activate the email address', {
-    'email_token': fields.String(required=True, description='Token for completing the registration and activating the email address')
+    'email_token': fields.String(
+        required=True,
+        description='Token for completing the registration and activating the email address'
+    )
 })
 
 reset_password = api.model('Data to reset your password in case you forgot', {
-    'email_token': fields.String(requried=True, description='The token sent to the user via mail for unforgeable requests'),
+    'email_token': fields.String(
+        requried=True,
+        description='The token sent to the user via mail for unforgeable requests'
+    ),
     'new_password': fields.String(required=True, description='The new password')
 })
 

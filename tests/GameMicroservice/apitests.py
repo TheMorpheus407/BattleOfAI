@@ -42,6 +42,7 @@ class GamesTest(unittest.TestCase):
                 resp2 = requests.get(url+"games/"+ str(id))
                 self.assertEqual(resp2.json()['game_name'], name)
 
+
 class InterfaceRegisterTest(unittest.TestCase):
     def setUp(self):
         self.game_id = int(requests.post(url + "games/createGame", json={"game_name": "Interface"}).text)
@@ -108,6 +109,7 @@ class InterfacePlayTest(unittest.TestCase):
         data = {"player": {"id": user_id, "token": user_0_key}, "turn": "[]"}
         resp = requests.post(self.game_url + "/makeTurn", json=data).status_code
         self.assertEqual(resp, 403)
+
 
 if __name__ == '__main__':
     unittest.main()

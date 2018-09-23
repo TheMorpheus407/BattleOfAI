@@ -5,10 +5,12 @@ from tests.IAM.UserDTO import userDTO as UserDTO, session
 
 url = "http://0.0.0.0:1338/api/iam/"
 
+
 def drop_all_add_one():
     session.drop_all()
     session.add(UserDTO("Challo", "somemail@domain.com", "asdf1234", True))
     session.commit()
+
 
 class RegisterTest(unittest.TestCase):
     def setUp(self):
@@ -18,11 +20,11 @@ class RegisterTest(unittest.TestCase):
         username = "HalloWelt"
         email = "somemail@domain.com"
         data = {
-  "username": username,
-  "email": email,
-  "password": "asdf1234",
-  "newsletter": True
-}
+          "username": username,
+          "email": email,
+          "password": "asdf1234",
+          "newsletter": True
+        }
         resp = requests.post(url + "register", json=data)
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.json()["success"], True)
@@ -82,6 +84,7 @@ class VerifyVerifiedEmailTest(unittest.TestCase):
         resp = requests.post(url + "verifyEmail", json={"email_token": user.email_token})
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(resp.json()["success"], False)
+
 
 if __name__ == '__main__':
     unittest.main()

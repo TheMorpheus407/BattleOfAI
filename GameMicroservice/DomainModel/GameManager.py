@@ -5,6 +5,7 @@ from GameMicroservice.DomainModel.GameState import GameState
 from GameMicroservice.DomainModel.GameInstance import GameInstance
 from GameMicroservice.CoRe.CoReInstance import CoReInstance
 
+
 def create_game(game_name):
     if game_name == GameInstance.GAME_NAME:
         game = create_gamedto(game_name)
@@ -15,6 +16,7 @@ def create_game(game_name):
         game_instance = CoReInstance(game.id, game_dto=game)
         return game.id
     return 0
+
 
 def load_from_json(id):
     game = GameDTO.query.filter_by(id=id).first()

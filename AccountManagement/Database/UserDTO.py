@@ -3,6 +3,7 @@ import bcrypt
 import secrets
 from datetime import datetime, timedelta
 
+
 class UserDTO(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(255))
@@ -36,12 +37,14 @@ class UserDTO(db.Model):
         self.email_token_generated_time = None
         db.session.commit()
 
+    # TODO shouldn't this method be static
     def password_to_hash(self, password):
         return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
     def check_password(self, to_check):
         return bcrypt.checkpw(to_check.encode('utf-8'), self.password)
 
+    # TODO shouldn't this method be static
     def generate_independent_token(self):
         token = secrets.token_urlsafe(192)
         if len(token) > 256:

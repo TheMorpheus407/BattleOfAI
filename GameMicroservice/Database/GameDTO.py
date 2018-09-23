@@ -1,6 +1,7 @@
 from GameMicroservice.Database.db import db
 from GameMicroservice.DomainModel.GameState import GameState
 
+
 class GameDTO(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     game_name = db.Column(db.String(255))
@@ -81,5 +82,22 @@ class GameDTO(db.Model):
         db.session.commit()
 
     def get_players_as_list(self):
-        liste = [self.player1_id, self.player2_id, self.player3_id, self.player4_id, self.player5_id, self.player6_id, self.player7_id, self.player8_id, self.player9_id, self.player10_id, self.player11_id, self.player12_id, self.player13_id, self.player14_id, self.player15_id, self.player16_id]
-        return liste
+        lst = [
+            self.player1_id,
+            self.player2_id,
+            self.player3_id,
+            self.player4_id,
+            self.player5_id,
+            self.player6_id,
+            self.player7_id,
+            self.player8_id,
+            self.player9_id,
+            self.player10_id,
+            self.player11_id,
+            self.player12_id,
+            self.player13_id,
+            self.player14_id,
+            self.player15_id,
+            self.player16_id
+        ]
+        return lst

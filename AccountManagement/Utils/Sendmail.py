@@ -1,6 +1,7 @@
 import smtplib
 import AccountManagement.settings as settings
 
+
 class SMTPMail:
     def __init__(self, host, port, username, password):
         self.conn = smtplib.SMTP(host, port)
@@ -26,6 +27,7 @@ Subject: {subject}
     def exit(self):
         self.conn.quit()
 
+
 def send_mail(receiver, message, subject):
     if isinstance(receiver, str):
         recipients = []
@@ -38,6 +40,7 @@ def send_mail(receiver, message, subject):
     smtp.sendmail(subject, message, recipients)
     smtp.exit()
 
+
 def send_registration_mail(receiver, email_token):
     message = """Thank you for registering at The Battle Of AI.
 To complete your registration, please go to https://battleofai.net/verifyEmail.html?email_token=""" + str(email_token) + """
@@ -45,6 +48,7 @@ If you did not issue this email, please ignore it.
 For more information on privacy policy and terms of use, please fo to https://battleofai.net/
 """
     send_mail(receiver, message, 'Your registration at the Battle Of AI')
+
 
 def send_pwforgot_email(receiver, email_token):
     message = """

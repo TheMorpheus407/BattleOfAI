@@ -9,6 +9,7 @@ import json
 
 gamenamespace = Namespace('games/', description='Information about all games')
 
+
 @gamenamespace.route('/<int:id>')
 class GameResource(Resource):
     @api.marshal_with(game)
@@ -27,6 +28,7 @@ class GameResource(Resource):
         }
         return my_json
 
+
 @gamenamespace.route('/<int:id>/registerPlayer')
 class RegisterResource(Resource):
     @api.expect(player)
@@ -38,6 +40,7 @@ class RegisterResource(Resource):
         if open_slots <= 0:
             return False
         return game.register_player(request.json['id'])
+
 
 @gamenamespace.route('/<int:id>/makeTurn')
 class TurnResource(Resource):
@@ -70,11 +73,12 @@ class GameManagerResource(Resource):
         ret = {'games': [{'id':x} for x in game_ids]}
         return ret
 
+
 @gamenamespace.route('/createGame')
 class CreateGameManagerResource(Resource):
     @api.expect(game_name)
     def post(self):
-        #TODO limit for DDoS Protection
+        # TODO limit for DDoS Protection
         val = create_game(request.json['game_name'])
         if val == 0:
             abort(501)

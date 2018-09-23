@@ -2,6 +2,7 @@ import GameMicroservice.settings as settings
 import requests
 import json
 
+
 def validate_login(player_id, player_token):
     player_token = player_token.replace("'", '"')
     tokens = json.loads(player_token)

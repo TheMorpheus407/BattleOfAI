@@ -12,6 +12,7 @@ session = Session()
 
 Base = declarative_base()
 
+
 class userDTO(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String(255))
