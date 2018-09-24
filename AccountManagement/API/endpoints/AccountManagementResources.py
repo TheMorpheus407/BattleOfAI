@@ -2,6 +2,7 @@ from flask_restplus import Namespace, Resource
 from flask import request
 
 import string
+import re
 
 from AccountManagement.API.api_var import api
 from AccountManagement.API.api_def import user_data, userdetails, new_user, successful, login_data, token, \
@@ -25,8 +26,31 @@ class RegisterResource(Resource):
         data = request.json
         if UserDTO.query.filter_by(username=data['username']).first() is not None:
             return {'success': False, 'message': 'User already exists.'}
+        
         if UserDTO.query.filter_by(email=data['email']).first() is not None:
             return {'success': False, 'message': 'Email already registered.'}
+        
+        password = data['password']
+        length_error = len(password) < 8
+        if length_error:
+            return {'success': False, 'message': 'Password too short.'}
+        
+        digit_error = re.search(r"\d", password) is None
+        if digit_error:
+            return {'success': False, 'message': 'Password contains no digits.'}
+        
+        uppercase_error = re.search(r"[A-Z]", password) is None
+        if uppercase_error:
+            return {'success': False, 'message': 'Password contains no uppercase letters.'}
+        
+        lowercase_error = re.search(r"[a-z]", password) is None
+        if lowercase_error:
+            return {'success': False, 'message': 'Password contains no lowercase letters.'}
+        
+        symbol_error = re.search(r"[ !#$%&'()*+,-./[\\\]^_`{|}~"+r'"]', password) is None
+        if symbol_error:
+            return {'success': False, 'message': 'Password contains no special characters.'}
+        
         user = UserDTO(data['username'], data['email'], data['password'], data['newsletter'])
         db.session.add(user)
         db.session.commit()
