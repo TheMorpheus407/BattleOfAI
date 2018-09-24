@@ -25,6 +25,8 @@ class RegisterResource(Resource):
         data = request.json
         if UserDTO.query.filter_by(username=data['username']).first() is not None:
             return {'success': False, 'message': 'User already exists.'}
+        if UserDTO.query.filter_by(email=data['email']).first() is not None:
+            return {'success': False, 'message': 'Email already registered.'}
         user = UserDTO(data['username'], data['email'], data['password'], data['newsletter'])
         db.session.add(user)
         db.session.commit()
