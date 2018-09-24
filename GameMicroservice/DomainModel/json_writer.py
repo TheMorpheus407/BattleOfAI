@@ -1,6 +1,6 @@
 import json, os
 
-save_folder = 'Games_Archive/'
+save_folder = '/data/'
 
 
 def write_to_file(id, game_instance):
