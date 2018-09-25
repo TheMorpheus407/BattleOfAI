@@ -21,7 +21,7 @@ def turn(board, symbol):
     ITS YOUR TURN TO CODE THE AI!
     :param board: Contains the current state of the game
     :param symbol: Contains your symbol on the board - either X if you are the first player or O if you are the 2nd.
-    :return: pos_x, pos_y where your AI wants to place a stone
+    :return: pos_y, pos_x where your AI wants to place a stone
     """
     # TODO CODE!
     for i in range(8):
