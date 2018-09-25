@@ -38,3 +38,6 @@ See the subfolders of the projects
    [Python Flask]: <http://flask.pocoo.org/>
    [Flask Restplus]: <https://github.com/noirbizarre/flask-restplus>
    [SQLAlchemy]: <https://www.sqlalchemy.org/>
+
+### Contributors
+- youreMine#7869 (Discord): Python API Wrapper
