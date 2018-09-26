@@ -9,6 +9,13 @@ class GameState(Enum):
     STARTED = "STARTED"
     ABORTED = "ABORTED"
     FINISHED = "FINISHED"
+    ANY = "ANY"
+    ANY_DICT = "ANY_DICT"
+
+
+class MatchMethod(Enum):
+    CREATE = 1
+    JOIN = 2
 
 
 class BOAIapi:
@@ -55,14 +62,29 @@ class BOAIapi:
         self.log("_login", "Logged in successfully as", self.username + " (ID: " + str(userid) + ")")
         return userid, token
 
-    def get_games(self, own=False, game_state=GameState.WAITING):
+    def get_games(self, own=False, game_state=GameState.WAITING, user_id=None):
         addition = ("&user_ids=" + str(self.player_id)) if own else ""
-        url = f"{self.games_api_url}games/?game_state={game_state.value}&game_name=Core{addition}"
-        self.log("get_games", url, requirement=2)
-        raw_matches = requests.get(url).json()["games"]
-        return list(k["id"] for k in raw_matches)
+        if user_id is not None:
+            assert own is False, "Can't use specified user_id and own=True at the same time."
+            addition = "&user_ids=" + str(user_id)
+        if game_state == GameState.ANY:
+            r = []
+            for gs in GameState:
+                if gs != GameState.ANY and gs != GameState.ANY_DICT:
+                    r += self.get_games(own=True, game_state=gs, user_id=user_id)
+            return r
+        elif game_state == GameState.ANY_DICT:
+            r = {}
+            for gs in GameState:
+                if gs != GameState.ANY and gs != GameState.ANY_DICT:
+                    r[gs.value] = self.get_games(own=True, game_state=gs, user_id=user_id)
+            return r
+        else:
+            url = f"{self.games_api_url}games/?game_state={game_state.value}&game_name=Core{addition}"
+            self.log("get_games", url, requirement=2)
+            raw_matches = requests.get(url).json()["games"]
+            return list(k["id"] for k in raw_matches)
 
-    # noinspection PyMethodMayBeStatic
     def create_game(self):
         """
         creates a game and returns the game id
@@ -72,10 +94,10 @@ class BOAIapi:
         assert resp.status_code == 200
         return int(resp.text)
 
-    def register(self, game_id):
+    def join(self, game_id):
         """
-        Registers the player for a match by id
-        :param game_id: The match to register on
+        Joins a match
+        :param game_id: The match to join
         """
         resp = requests.post(self.games_api_url + "games/" + str(game_id) + "/registerPlayer",
                              json={"id": self.player_id, "token": self.token})
@@ -95,49 +117,11 @@ class BOAIapi:
         }
         resp = requests.post(self.account_management_api_url + "iam/validateToken", json=data)
         if not resp.status_code == 200 or resp.json()["success"] is False:
-            return self._login()[1]
+            self.token = self._login()[1]
         return self.token
 
     def status(self, game_id):
         return requests.get(self.games_api_url + "games/" + str(game_id)).json()
-
-    def find_game(self, only_finish=False):
-        # SEARCH FOR BROKEN GAMES
-        if self.play_games_i_already_left:
-            registered_games = self.get_games(own=True)
-            if len(registered_games) > 0:
-                self.log("join_first", "Found broken game", registered_games[0])
-                return registered_games[0]
-
-        # SEARCH FOR STARTED GAMES
-        if self.play_games_i_already_left:
-            started_games = self.get_games(own=True, game_state=GameState.STARTED)
-            if len(started_games) > 0:
-                self.log("join_first", "Found started game", started_games[0])
-                return started_games[0]
-
-        if only_finish:
-            return None
-
-        # NO BROKEN GAMES
-        open_games = self.get_games()
-        for i in open_games:
-            self.log("join_first", "Found open games, trying to join", i)
-            if self.register(i):
-                self.log("join_first", "Joined", i)
-                return i
-
-        self.log("join_first", "No open games found, trying to create one myself...")
-
-        # NO OPEN GAME, TRY CREATING A NEW ONE
-        game_id = None
-        while game_id is None:
-            game_id = self.create_game()
-            if not self.register(game_id):
-                game_id = None
-            else:
-                self.log("join_first", "Joined newly created game", game_id)
-                return game_id
 
     def wait_for_participants(self, game_id, ignore_other_lobby_error=False, delay=5):
         game_players = list(k["id"] for k in self.status(game_id)["players"])
@@ -154,6 +138,11 @@ class BOAIapi:
                 time.sleep(delay)
 
     def assert_basics(self, game_id):
+        """
+        # TODO is this redundant?
+        :param game_id:
+        :return:
+        """
         game_info = self.status(game_id)
         participants = list(k["id"] for k in self.status(game_id)["players"])
 
@@ -163,10 +152,31 @@ class BOAIapi:
         assert game_info["game_state"] == "STARTED", "[BOAIapi] assert_basics: Tried playing in a not yet started game?"
         assert game_info["open_slots"] == 0, "[BOAIapi] assert_basics: Game ist not full?"
 
-    def is_my_turn(self, game_id, game_status=None):
+    def is_my_turn(self, game_id, game_status=None) -> bool:
+        """
+        This function returns true if its your turn in "game_id"
+
+        :param game_id: The game id
+        :param game_status: If you already requested the game status and don't want to request it again, you can pass
+        it here to save some network traffic
+        :return: True if its your turn
+        """
         if game_status is None:
             game_status = self.status(game_id)
         return game_status["players"][game_status["active_player"]]["id"] == self.player_id
+
+    def participants(self, game_id, game_status=None) -> list:
+        """
+        This function returns all players participating in "game_id"
+
+        :param game_id: The game id
+        :param game_status: If you already requested the game status and don't want to request it again, you can pass
+        it here to save some network traffic
+        :return: Players
+        """
+        if game_status is None:
+            game_status = self.status(game_id)
+        return list(k["id"] for k in game_status["players"])
 
     def make_move(self, game_id, x, y):
         status_code = 401
@@ -176,8 +186,23 @@ class BOAIapi:
             self.check_and_update_token()
             status_code = resp.status_code
 
-    def handle_available(self):
-        game_ids = self.get_games(own=True, game_state=GameState.STARTED)
+    def handle_available(self, game_ids=None):
+        """
+        Handles the games specified in "game_ids" or all started games.
+
+        # TODO auto create games if no games available
+
+        Example usage:
+        while True:
+            api.handle_available()
+            time.sleep(10)
+
+        :param game_ids: Optional game_ids
+        :return: None
+        """
+        self.check_and_update_token()
+        if game_ids is None:
+            game_ids = self.get_games(own=True, game_state=GameState.STARTED)
         for game_id in game_ids:
             game_status = self.status(game_id)
             if self.is_my_turn(game_id, game_status=game_status):
@@ -190,41 +215,77 @@ class BOAIapi:
                 self.log("handle_available", "Handled", game_id, "(Not your turn)")
         self.log("handle_available", "Done handling available")
 
-    def play(self, only_finish=False):
+    def match(self, user_id, mode: MatchMethod = MatchMethod.JOIN, force_chosen_game_id=None):
         """
-        TODO fixme?
-        WARNING: basically copied from the "old" api, use "handle_available" instead
-        Plays the game for you! (Make sure to enter code in the turn-function.
-        :return: True if you won or False if lost.
-        """
-        game_id = self.find_game(only_finish=True)
-        if game_id is None:
-            if only_finish:
-                self.log("play", "Finished.")
-            else:
-                self.log("play", "Found no open game and wasn't able to create a game (i guess?).")
-            return None
-        self.wait_for_participants(game_id)
-        self.assert_basics(game_id)
+        This method can be used, if you want to play against a specified player.
+        If you use mode=MatchMethod.JOIN, the he will have to user mode=MatchMethod.CREATE.
+        TLDR one of you has to create a lobby and the other one has to join
 
-        is_ongoing = True
-        self.log("play", "Handling", game_id)
-        while is_ongoing:
-            game_info = self.status(game_id)
-            if not game_info["game_state"] == "STARTED":
-                self.log("play", "Game still not started?")
-                break
-            is_active = game_info["players"][game_info["active_player"]]["id"] == self.player_id
-            if is_active:
-                pos_x, pos_y = self.func(game_info['history'][-1]['board'],
-                                         BOAIapi.get_symbol(game_info["active_player"]))
-                self.log("play", "Moving to (" + str(pos_x) + ", " + str(pos_y) + ")")
-                status_code = 401
-                while status_code == 401:
-                    self.check_and_update_token()
-                    data = {"player": {"id": self.player_id, "token": self.token}, "turn": str([pos_x, pos_y])}
-                    resp = requests.post(self.games_api_url + "games/" + str(game_id) + "/makeTurn", json=data)
-                    if resp.status_code == 200 and 'false' in resp.text:
-                        is_ongoing = False
-                    status_code = resp.status_code
-            time.sleep(5)
+        Example usage:
+        Player1:
+            api.match(123, mode=MatchMethod.CREATE)
+        Player2:
+            api.match(123, mode=MatchMethod.JOIN)
+
+        :param user_id:The specified player
+        :param mode: MatchMethod (either create or join game)
+        :param force_chosen_game_id: If the merhod is MatchMethod.JOIN and there are multiple available games,
+        you will be asked to select a lobby. You cant skip that thing by specifying a "always i dont care" default value
+        :return: None
+        """
+
+        if mode == MatchMethod.JOIN:
+            self.log("match", "Method: JOIN")
+            game_ids = self.get_games(user_id=user_id, game_state=GameState.WAITING)
+            chosen_game_id = 0
+            if len(game_ids) == 0:
+                self.log("match", "User", user_id, "has no WAITING match")
+                return
+            elif len(game_ids) == 1:
+                self.log("match", "Found waiting game", game_ids[0])
+                chosen_game_id = game_ids[0]
+            else:
+                self.log("match", "User", user_id, "has to many WAITING matches. You have to select one.")
+                if force_chosen_game_id is not None:
+                    self.log("match", "Force mode enabled, set selected to", force_chosen_game_id)
+                    chosen_game_id = force_chosen_game_id
+                else:
+                    self.log("match", "Available matches:", game_ids)
+                    inp = input("$ ")
+                    if not inp.isdigit():
+                        self.log("match", "You have to enter a game id, for example \"3\"")
+                        return
+                    inp = int(inp)
+                    if inp not in game_ids:
+                        self.log("match", "You entered a invalid game id")
+                        return
+                    chosen_game_id = inp
+
+            status = self.status(chosen_game_id)
+            participants = self.participants(chosen_game_id, game_status=status)
+            if self.player_id in participants:
+                self.log("match", "You are already in that game.")
+                return
+
+            self.join(chosen_game_id)
+            self.log("match", "Joined the match.")
+            while status["game_state"] != GameState.FINISHED.value:
+                self.handle_available([chosen_game_id])
+                status = self.status(chosen_game_id)
+                time.sleep(5)
+
+        elif mode == MatchMethod.CREATE:
+            self.log("match", "Method: CREATE")
+
+            game_id = self.create_game()
+            self.join(game_id)
+
+            self.log("match", "Created and joined game")
+
+            self.wait_for_participants(game_id)
+
+            status = self.status(game_id)
+
+            while status["game_state"] != GameState.FINISHED.value:
+                self.handle_available([game_id])
+                status = self.status(game_id)
