@@ -181,7 +181,7 @@ class BOAIapi:
     def make_move(self, game_id, x, y):
         status_code = 401
         while status_code == 401:
-            data = {"player": {"id": self.player_id, "token": self.token}, "turn": str([x, y])}
+            data = {"player": {"id": self.player_id, "token": self.token}, "turn": str([y, x])}
             resp = requests.post(self.games_api_url + "games/" + str(game_id) + "/makeTurn", json=data)
             self.check_and_update_token()
             status_code = resp.status_code
