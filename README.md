@@ -41,3 +41,7 @@ See the subfolders of the projects
 
 ### Contributors
 - youreMine#7869 (Discord): Python API Wrapper
+
+### Other API implementations
+- Scala
+    - [battle-of-ai-api](https://gitlab.com/vitrox/battle-of-ai-api) by Vitrox#8645 (Discord)
