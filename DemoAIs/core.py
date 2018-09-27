@@ -14,7 +14,7 @@ def turn(board, symbol):
 
     for x in range(8):
         for y in range(8):
-            if board[x][y] == "#":
+            if board[y][x] == "#":
                 return x, y
 
 
