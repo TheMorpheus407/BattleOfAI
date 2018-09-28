@@ -22,9 +22,9 @@ def turn(board, symbol):
 # If you should find any bug in this API-Wrapper (or the API),
 # please report it.
 # Before this "ai" will at least do something, you have to change
-# the login credentials in "Config.py"
+# the login credentials in ".env" (see ".env.sample")
 #
-api = BOAIapi(username, password, turn, verbose=1)
+api = BOAIapi(turn, verbose=1)
 
 while True:
     api.handle_available()
