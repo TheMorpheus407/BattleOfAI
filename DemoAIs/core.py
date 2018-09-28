@@ -1,7 +1,6 @@
 import time
 
 from DemoAIs.BOAIapi import BOAIapi
-from DemoAIs.Config import *
 
 
 def turn(board, symbol):
