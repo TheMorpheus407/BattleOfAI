@@ -71,13 +71,13 @@ class BOAIapi:
             r = []
             for gs in GameState:
                 if gs != GameState.ANY and gs != GameState.ANY_DICT:
-                    r += self.get_games(own=True, game_state=gs, user_id=user_id)
+                    r += self.get_games(own=own, game_state=gs, user_id=user_id)
             return r
         elif game_state == GameState.ANY_DICT:
             r = {}
             for gs in GameState:
                 if gs != GameState.ANY and gs != GameState.ANY_DICT:
-                    r[gs.value] = self.get_games(own=True, game_state=gs, user_id=user_id)
+                    r[gs.value] = self.get_games(own=own, game_state=gs, user_id=user_id)
             return r
         else:
             url = f"{self.games_api_url}games/?game_state={game_state.value}&game_name=Core{addition}"
