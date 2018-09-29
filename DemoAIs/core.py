@@ -23,8 +23,11 @@ def turn(board, symbol):
 # Before this "ai" will at least do something, you have to change
 # the login credentials in ".env" (see ".env.sample")
 #
-api = BOAIapi(turn, verbose=1)
 
-while True:
-    api.handle_available()
-    time.sleep(5)
+if __name__ == '__main__':
+
+    api = BOAIapi(turn, verbose=1)
+
+    while True:
+        api.handle_available()
+        time.sleep(5)

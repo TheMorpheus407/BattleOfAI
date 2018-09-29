@@ -206,6 +206,8 @@ class BOAIapi:
         :return: None
         """
         self.check_and_update_token()
+        if type(game_ids) == int:
+            game_ids = [game_ids]
         if game_ids is None:
             game_ids = self.get_games(own=True, game_state=GameState.STARTED)
         for game_id in game_ids:
