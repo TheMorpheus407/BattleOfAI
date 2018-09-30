@@ -19,6 +19,7 @@ Tech used here (and in the let's code:
 * [Flask Restplus] - Python Lib for Flask for creating RESTful Web Services
 * [SQLAlchemy] - Easy OOP databases for Flask
 * [HTML, CSS, JavaScript, jQuery] - For Frontend
+* [PyGame] - For Graphical User Interface
 
 
 ### Installation
@@ -38,6 +39,8 @@ See the subfolders of the projects
    [Python Flask]: <http://flask.pocoo.org/>
    [Flask Restplus]: <https://github.com/noirbizarre/flask-restplus>
    [SQLAlchemy]: <https://www.sqlalchemy.org/>
+   [PyGame]: <https://www.pygame.org/>
 
 ### Contributors
 - youreMine#7869 (Discord): Python API Wrapper
+- the_blaggy$#9925 (Discord): Graphical User Interface
