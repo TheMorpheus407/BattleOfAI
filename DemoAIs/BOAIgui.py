@@ -25,15 +25,13 @@ class Menu:
 
     api = BOAIapi(turn)
 
-    game_ids = api.get_games(own=True, game_state=GameState.ANY)
-    game_ids.sort()
-    game_ids.append("NEW")
-    game_ids.reverse()
-    game_ids = game_ids[:18]
-    game_pos = {}
-    games_drawn = {game_id: False for game_id in game_ids}
+    game_ids = None
+    game_pos = None
+    games_drawn = None
 
     def __init__(self):
+
+        self.set_games()
 
         pygame.init()
         self.gameDisplay = pygame.display.set_mode((self.display_width, self.display_height))
@@ -67,13 +65,23 @@ class Menu:
 
                             Game(game_id).game_loop()
                             self.gameDisplay.fill(self.background_color)
-                            self.games_drawn = {game_id: False for game_id in self.game_ids}
+                            self.set_games()
 
             threading.Thread(target=self.draw_ui).start()
             threading.Thread(target=self.draw_all_games).start()
 
             pygame.display.update()
             self.clock.tick(1)
+
+    def set_games(self):
+
+        self.game_ids = self.api.get_games(own=True, game_state=GameState.ANY)
+        self.game_ids.sort()
+        self.game_ids.append("NEW")
+        self.game_ids.reverse()
+        self.game_ids = self.game_ids[:18]
+        self.game_pos = {}
+        self.games_drawn = {game_id: False for game_id in self.game_ids}
 
     def pos_to_game(self, pos):
 
@@ -193,16 +201,20 @@ class Game:
     api = BOAIapi(turn)
 
     is_ongoing = True
-    pointer = -1
 
     def __init__(self, game_id):
 
         self.game_id = game_id
-        # self.api.wait_for_participants(self.game_id)
         self.game = self.api.status(game_id)
+        self.pointer = len(self.game["history"]) - 1
 
-        # self.player1 = self.game["players"][0]["id"]
-        # self.player2 = self.game["players"][1]["id"]
+        self.handle_available_thread = threading.Thread(target=self.handle_available_loop)
+        self.handle_available_thread.setDaemon(True)
+        self.handle_available_thread.start()
+
+        self.pointer_thread = threading.Thread(target=self.update_pointer_loop)
+        self.pointer_thread.setDaemon(True)
+        self.pointer_thread.start()
 
         self.gameDisplay = pygame.display.set_mode((self.display_width, self.display_height))
         pygame.display.set_caption('CoRe - Battle Of AI')
@@ -232,16 +244,30 @@ class Game:
                         elif btn == "return":
                             self.is_ongoing = False
 
-            if self.game["winning_player"] is None:
-                threading.Thread(target=self.api.handle_available, args=([self.game_id])).start()
-                # self.api.handle_available([self.game_id])
-                self.game = self.api.status(self.game_id)
-                self.draw_board()
-                self.draw_game_score()
-                self.draw_players()
+            self.draw_board()
+            self.draw_game_info()
 
             pygame.display.update()
             self.clock.tick(1)
+
+    def handle_available_loop(self):
+
+        while self.game["winning_player"] is None and self.is_ongoing:
+
+            try:
+                self.api.handle_available(self.game_id)
+            except TypeError:
+                pass
+
+            self.game = self.api.status(self.game_id)
+            pygame.time.delay(5000)
+
+    def update_pointer_loop(self):
+
+        while self.game["winning_player"] is None and self.is_ongoing:
+
+            self.pointer += 1
+            pygame.time.delay(2500)
 
     @staticmethod
     def pos_to_btn(pos):
@@ -271,10 +297,10 @@ class Game:
                              [self.board_x + (column + 1) * (self.board_width / 8), self.board_y + self.board_height]
                              )
 
-        if self.pointer >= 0:
-            self.pointer = -1
-        elif self.pointer + len(self.game["history"]) < 0:
-            self.pointer = -len(self.game["history"])
+        if self.pointer < 0:
+            self.pointer = 0
+        elif self.pointer >= len(self.game["history"]):
+            self.pointer = len(self.game["history"]) - 1
 
         board = self.game["history"][self.pointer]["board"]
 
@@ -300,6 +326,8 @@ class Game:
                                        )
 
     def draw_game_info(self):
+
+        pygame.draw.rect(self.gameDisplay, self.background_color, [550, 0, 250, 600])
 
         # Game ID
 
@@ -367,7 +395,13 @@ class Game:
     def board_count(self):
 
         score1, score2 = 0, 0
-        board = self.game["history"][-1]["board"]
+
+        if self.pointer < 0:
+            self.pointer = 0
+        elif self.pointer >= len(self.game["history"]):
+            self.pointer = len(self.game["history"]) - 1
+
+        board = self.game["history"][self.pointer]["board"]
 
         for y in range(8):
             for x in range(8):
