@@ -30,8 +30,8 @@ class BOAIapi:
 
     """
 
-    def __init__(self, func, username=os.getenv("USERNAME"), password=os.getenv("PASSWORD"),
-                 play_games_i_already_left=True, verbose=0,
+    def __init__(self, func, username=os.getenv("BOAI_USERNAME"),
+                 password=os.getenv("BOAI_PASSWORD"), play_games_i_already_left=True, verbose=0,
                  games_api_url="https://games.battleofai.net/api/",
                  account_management_api_url="https://iam.battleofai.net/api/"):
         self.username = username
