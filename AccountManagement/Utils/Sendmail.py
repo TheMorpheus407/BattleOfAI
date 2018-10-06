@@ -43,7 +43,7 @@ def send_mail(receiver, message, subject):
 
 def send_registration_mail(receiver, email_token):
     message = """Thank you for registering at The Battle Of AI.
-To complete your registration, please go to https://battleofai.net/verifyEmail.html?email_token=""" + str(email_token) + """
+To complete your registration, please go to https://battleofai.net/forgotpassword/link.html?email_token=""" + str(email_token) + """
 If you did not issue this email, please ignore it.
 For more information on privacy policy and terms of use, please refer to https://battleofai.net/
 """
