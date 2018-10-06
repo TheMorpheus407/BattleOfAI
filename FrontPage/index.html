@@ -1,495 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Battle of AI</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
-
-  <!-- Favicons -->
-  <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <!--Font Awesome v5.0.6-->
-  <link href="css/all.css" rel="stylesheet">
-
-
-
-
-
-  <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/login.css" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: Avilon
-    Theme URL: https://bootstrapmade.com/avilon-bootstrap-landing-page-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
-
-
-  <!--==========================
-    COOKIE POLICY
-  ============================-->
-  <link rel="stylesheet" type="text/css" href="css/cookieconsent.min.css" />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Battle of AI - Write an AI and let it play against others</title>
+    <meta name="generator" content="Justin Riedel">
+    <noscript><meta http-equiv="refresh" content="0; URL=nojs.html"></noscript>
+    <link rel="stylesheet" href="layout_assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="layout_assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="layout_assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
 </head>
-
-<body>
-  <!--==========================
-    Header
-  ============================-->
-
-  <header id="header">
-    <div class="container">
-
-      <div id="logo" class="pull-left">
-        <h1><a href="#intro" class="scrollto">BATTLE OF AI</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="#intro"><img src="img/logo.png" alt="" title=""></a> -->
-      </div>
-      <nav id="nav-menu-container">
-        <ul class="nav-menu">
-          <li class="menu-active"><a href="#intro">Home</a></li>
-          <li><a href="#about">Get Started</a></li>
-          <li><a href="#advanced-features">The Game</a></li>
-          <li><a href="#clients">Community</a></li>
-          <li class="menu-has-children login-dropdown-menu loginTrigger"><a href="#modal">Login</a>
-            <ul>
-              <li><a class="loginTrigger" href="#modal">Login</a></li>
-              <li><a class="registerTrigger" href="#modal">Register</a></li>
-              <li><a class="forgotPasswordTrigger" href="#modal">Forgot Password</a></li>
-            </ul>
-          </li>
-          <li class="memberLink"><a href="members.html">Member Area</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav><!-- #nav-menu-container -->
+<body style="height: 100%;">
+    <div></div>
+    <div><div class="battleofai-intro" style="background-image: url('layout_assets/img/battleofai.jpeg');    background-repeat: no-repeat; background-size: cover;">
+        <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+            <div class="container"><a href="#" class="navbar-brand" >BATTLE OF AI</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                        <li role="presentation" class="nav-item"><a href="#getstarted" class="nav-link">Get Started</a></li>
+                        <li role="presentation" class="nav-item"><a href="#getstarted" class="nav-link">The Game</a></li>
+                        <li class="dropdown"><a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link dropdown-toggle">Login </a>
+                            <div role="menu" class="dropdown-menu"><a role="presentation" href="login.html" class="dropdown-item">Login with Account</a><a role="presentation" href="forgotpassword/start.html" class="dropdown-item">Reset credentials?</a><a role="presentation" href="signup.html" class="dropdown-item">Start new account</a></div>
+                        </li>
+                    </ul>
+                    <form style=" visibility: hidden;" target="_self" class="form-inline mr-auto">
+                        <div class="form-group"><label for="search-field"><i class="fa fa-search"></i></label><input type="search" name="search" class="form-control search-field" id="search-field" /></div>
+                    </form><span class="navbar-text"><a href="imprint.html" class="login">Contact</a></span><a class="btn btn-light action-button" role="button" href="signup.html">Start now</a></div>
     </div>
-  </header><!-- #header -->
-
-  <!--===========================
-    Login/Register Pop-Up
-  =============================-->
-  <div class="container">
-    <div id="modal" class="popupContainer">
-      <header class="popupHeader">
-        <span class="headerTitle">Login</span>
-        <span class="modalClose"><i class="fa fa-times"></i></span>
-      </header>
-      <section class="popupBody">
-        <!-- LOGIN -->
-        <div class="userLogin">
-          <form id="loginForm" action="" method="post">
-            <label>Username</label>
-            <input type="text" name="name"/>
-            <br/>
-            <label>Password</label>
-            <input type="password" name="password"/>
-            <br/>
-            <div class="checkbox">
-              <input id="remember" name="remember" value="YES" type="checkbox"/>
-              <label for="remember">Remember me on this computer</label>
-            </div>
-            <div class="actionBtns">
-              <div class="last">
-                <a href="#" id="loginUser" class="btn btnGo">Login</a>
-              </div>
-              <div class=""><a href="#" class="btn regBtn">
-                  <i class="fa fa-angle-double-left"></i>Register
-                </a>
-              </div>
-              <a href="#" id="forgotPasswordTriggerLink">Forgot password?</a>
-            </div>
-          </form>
+    </nav>
+<div class="container hero">
+    <div class="row">
+        <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+            <h1>Welcome to the Battle of AI</h1>
+            <p>Enhance your coding and AI skills and compete against others. Are you ready to start? Let's go!<br /></p><button class="btn btn-light btn-lg action-button" onClick="window.location.href='#getstarted'" type="button">Learn More</button></div>
+        <div class="col-md-5 col-lg-5 offset-lg-1 offset-xl-0 d-none d-lg-block phone-holder">
         </div>
-
-        <div class="forgotPassword" id="forgotPasswordDiv">
-          <form id="forgotPasswordForm">
-            <label>Email</label>
-            <input type="email" name="email"/>
-            <br/>
-            <div class="actionBtns">
-              <div class="last">
-                <a href="#" id="forgotPasswordButton" class="btn btnGo">Reset</a>
-              </div>
-              <div class=""><a href="#" class="btn loginBtn">
-                <i class="fa fa-angle-double-left"></i>Back
-              </a>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        <div class="userRegister" id="userRegisterDiv">
-          <form id="registerForm" action="" method="post">
-            <label>Nickname</label>
-            <input type="text" name="username"/>
-            <br/>
-            <label>Email</label>
-            <input type="email" name="email"/>
-            <br/>
-            <label>Password</label>
-            <input type="password" name="password"/>
-            <br/>
-            <div class="checkbox">
-              <input id="sendUpdates" type="checkbox" name="sendUpdates" value="YES"/>
-              <label for="sendUpdates">Email me about new stuff</label>
-            </div>
-            <div class="actionBtns">
-              <div class="last">
-                <a href="#" id="registerUser" class="btn btnGo">Register</a>
-              </div>
-              <div class=""><a href="#" class="btn loginBtn">
-                <i class="fa fa-angle-double-left"></i>Login
-              </a>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
     </div>
-  </div>
-
-  <!--==========================
-    Intro Section
-  ============================-->
-  <section id="intro">
-
-    <div class="intro-text">
-      <h2>Welcome to the Battle of AI</h2>
-      <p>Write an AI and let it play against others</p>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
-    </div>
-    </div>
-
-  </section><!-- #intro -->
-
-  <main id="main">
-    <section id="about" class="section-bg">
-      <div class="container-fluid">
-        <div class="section-header">
-          <h3 class="section-title">Get Started</h3>
-          <span class="section-divider"></span>
-          <p class="section-description">
-            The Battle of AI is a community project of the German IT-Youtuber <a href="https://www.youtube.com/subscription_center?add_user=TheMorpheus407">The Morpheus Tutorials</a>. Its purpose is to enhance your coding and AI skills and compete against others.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6 about-img wow fadeInLeft">
-            <img src="img/about-img.png" alt="">
-          </div>
-
-          <div class="col-lg-6 content wow fadeInRight">
-            <h2>Start easy. Improve your code. Master the Game.</h2>
-	    <h3>For the easy start, there are example AIs to get right onto it.</h3>
-	    <p>
-	    	Download the project from <a href="https://github.com/TheMorpheus407/BattleOfAI">Github</a> and dive deep.
-	    </p>
-            <ul>
-              <li><i class="ion-android-checkmark-circle"></i> Learn Python</li>
-              <li><i class="ion-android-checkmark-circle"></i> Use the sample code and implement the <code>turn()</code>-function</li>
-              <li><i class="ion-android-checkmark-circle"></i> You can find it on <a href="https://github.com/TheMorpheus407/BattleOfAI">Github</a></li>
-            </ul>
-
-            <p>
-              Wait? What game do we play?
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section id="advanced-features">
-
-      <div class="features-row section-bg">
+</div>
+</div></div>
+    <div class="battleofai-promo" id="getstarted">
         <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <img class="advanced-feature-img-right wow fadeInRight" src="img/advanced-feature-1.png" alt="">
-              <div class="wow fadeInLeft">
-                <h2>CoRe - Computer Reversi</h2>
-                <h3>Simple concepts, complex strategies.</h3>
-                <p>Place tiles of your color. If you surround the enemies tiles, they are converted and enhance your army.</p>
-                <p>When all tiles are placed, the player with the most of them wins the game.</p>
-                <h3>Developed by <a href="https://github.com/ac1235">Anthony Cipriano</a></h3>
-              </div>
+            <div class="intro">
+                <h2 class="text-center" style="color: rgba(49,52,55,0.91);">Get Started</h2>
+                <p class="text-center" style="margin: 0px;padding: 0px;margin-bottom: 70px;">The Battle of AI is a community project of the German IT-Youtuber&nbsp;The Morpheus Tutorials. Its purpose is to enhance your coding and AI skills and compete against others.</p>
             </div>
-          </div>
         </div>
-      </div>
-    <section id="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-9 text-center text-lg-left">
-            <h3 class="cta-title">Register now</h3>
-            <p class="cta-text">Register now to start fighting and climb the ladder.</p>
-          </div>
-          <div class="col-lg-3 cta-btn-container text-center registerTrigger">
-            <a class="cta-btn align-middle registerTrigger" href="#modal">Register</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section id="clients">
-      <div class="container">
-	<div class="section-header">
-          <h3 class="section-title">More Games</h3>
-          <span class="section-divider"></span>
-          <p class="dark-section-description">Are in development and are coming soon. <br/>You are a developer already or want to become one? <br/> Join the Community.</p>
-        </div>
-        <div class="row wow fadeInUp">
-
-          <div class="col-md-2"><a href="https://www.youtube.com/subscription_center?add_user=TheMorpheus407">
-            <img src="img/clients/youtube-logo.png" alt=""></a>
-          </div>
-
-          <div class="col-md-2"><a href="https://twitter.com/TheMorpheusTuts">
-            <img src="img/clients/twitter-logo.png" alt=""></a>
-          </div>
-
-          <div class="col-md-2"><a href="https://github.com/TheMorpheus407">
-            <img src="img/clients/github-logo.png" alt=""></a>
-          </div>
-
-          <div class="col-md-2"><a href="https://www.facebook.com/themorpheustutorials">
-            <img src="img/clients/facebook-logo.png" alt=""></a>
-          </div>
-
-          <div class="col-md-2"><a href="https://www.patreon.com/user?u=5322110">
-            <img src="img/clients/patreon.png" alt=""></a>
-          </div>
-
-          <div class="col-md-2"><a href="https://www.paypal.me/TheMorpheus">
-            <img src="img/clients/paypal-logo.png" alt=""></a>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <section id="faq">
-      <div class="container">
-
-        <div class="section-header">
-          <h3 class="section-title">Frequently Asked Questions</h3>
-          <span class="section-divider"></span>
-          <p class="section-description"></p>
-        </div>
-
-        <ul id="faq-list" class="wow fadeInUp">
-          <li>
-            <a data-toggle="collapse" class="collapsed" href="#faq1">Which version of Python is used?<i class="ion-android-remove"></i></a>
-            <div id="faq1" class="collapse" data-parent="#faq-list">
-              <p>
-                Python 3.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq2" class="collapsed">When are new games released?<i class="ion-android-remove"></i></a>
-            <div id="faq2" class="collapse" data-parent="#faq-list">
-              <p>
-                That depends on the activity of the devs. Since we code in our sparetime, there is no definite release date for the games. However, I will notify you on my Channels.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq3" class="collapsed">I want to join the community, however I don't speak German. <i class="ion-android-remove"></i></a>
-            <div id="faq3" class="collapse" data-parent="#faq-list">
-              <p>
-                My Tutorials are in German only, but if you want to participate in projects or want to ask me something, I do speak English, too.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-toggle="collapse" href="#faq4" class="collapsed">I have a bug, problem or wish. <i class="ion-android-remove"></i></a>
-            <div id="faq4" class="collapse" data-parent="#faq-list">
-              <p>
-                Contact me on one of the ways displayed below.
-              </p>
-            </div>
-          </li>
-        </ul>
-
-      </div>
-    </section>
-    <section id="contact">
-      <div class="container">
-        <div class="row wow fadeInUp">
-
-          <div class="col-lg-4 col-md-4">
-            <div class="contact-about">
-              <h3>Battle of AI</h3>
-              <p>Problems? Suggestions? Contact me.</p>
-              <div class="social-links">
-                <a href="https://www.youtube.com/subscription_center?add_user=TheMorpheus407" class="linkedin"><i class="fab fa-youtube"></i></a>
-                <a href="https://twitter.com/TheMorpheusTuts" class="twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.facebook.com/themorpheustutorials" class="facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://github.com/TheMorpheus407" class="instagram"><i class="fab fa-github"></i></a>
-                <a href="https://www.patreon.com/user?u=5322110" class="google-plus"><i class="fab fa-patreon"></i></a>
-                <a href="https://discord.gg/BnYZ8XS" class="google-plus"><i class="fab fa-discord"></i></a>
-                <a href="http://amzn.to/2slBSgH" class="google-plus"><i class="fab fa-amazon"></i></a>
-                <a href="https://www.paypal.me/TheMorpheus" class="google-plus"><i class="fab fa-paypal"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-5 col-md-8">
-            <div class="info">
-              <div>
-                <i class="ion-ios-location-outline"></i>
-                <p>Hedwig-Kettler-Str. 16<br>76137 Karlsruhe</p>
-              </div>
-
-              <div>
-                <i class="ion-ios-email-outline"></i>
-                <p>kontakt@the-morpheus.de</p>
-              </div>
-
-              <div>
-                <i class="ion-ios-telephone-outline"></i>
-                <p>+49 171 9434378</p>
-              </div>
-
-            </div>
-          </div>
-<!--
-          <div class="col-lg-5 col-md-8">
-            <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group col-lg-6">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
-                  </div>
+        <div class="container">
+            <div class="row" style="margin-bottom: 67px;">
+                <div class="col-md-8"><img class="img-fluid" src="layout_assets/img/battleofai_homesec.png" alt="Alt Text"></div>
+                <div class="col-md-4">
+                    <h3 class="my-3">Start easy. Improve your code. Master the Game.<br></h3>
+                    <p><em>For the easy start, there are example AIs to get right onto it.</em><br><br>•&nbsp;Download the project from&nbsp;<a href="https://github.com/TheMorpheus407/BattleOfAI">Github</a>&nbsp;, dive deep.&nbsp;<br><br>•&nbsp;Learn Python&nbsp;<br><br>•
+                        Use sample code and implement turn()-function&nbsp;<br><br>• You can find it on&nbsp;<a href="https://github.com/TheMorpheus407/BattleOfAI">Github</a><br><br><em>Wait? What game do we play?</em><br></p>
                 </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                  <div class="validation"></div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button id="contactFormSendButton" type="button" title="Send Message">Send Message</button></div>
-              </form>
             </div>
-          </div>
--->
+            <div class="row" style="margin-bottom: 67px;">
+                <div class="col-md-4">
+                    <h3 class="my-3">CoRe - Computer Reversi<br></h3>
+                    <p><em>Simple concepts, complex strategies.</em><br><br>Place tiles of your color. If you surround the enemies tiles, they are converted and enhance your army.<br><br>When all tiles are placed, the player with the most of them wins the
+                        game.<br><br><em>Developed by&nbsp;</em><a href="https://github.com/ac1235"><em>Anthony Cipriano</em></a><br></p>
+                </div>
+                <div class="col-md-8"><img class="img-fluid" src="layout_assets/img/battleofai_homethird.png" alt="Alt Text"></div>
+            </div>
         </div>
-
-      </div>
-    </section><!-- #contact -->
-  </main>
-
-  <!--==========================
-    Footer
-  ============================-->
-  <footer id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 text-lg-left text-center">
-          <div class="copyright">
-            &copy; Copyright <strong>Avilon</strong>. All Rights Reserved
-          </div>
-          <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Avilon
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
-            <a href="#intro" class="scrollto">Home</a>
-            <a href="privacypolicy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Use</a>
-          </nav>
-        </div>
-      </div>
     </div>
-  </footer><!-- #footer -->
+    <div class="battleofai-readytostart" style="background-image: url(layout_assets/img/controldeskHeader.jpg); background-repeat: no-repeat; background-size: cover;">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Are you ready to start?</h2>
+                <p class="text-center">That's great, then just create an account and get access to the important services you need for your project.</p>
+            </div>
+            <div class="buttons"><a class="btn btn-primary" role="button" href="signup.html">Let's GO</a></div>
+        </div>
+    </div>
+    <div class="battleofai-footer">
+        <footer>
+            <div class="social"><a href="https://www.youtube.com/channel/UCLGY6_j7kZfA1dmmjR1J_7w?sub_confirmation=1"><i class="icon ion-social-youtube"></i></a><a href="https://twitter.com/TheMorpheusTuts"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/themorpheustutorials"><i class="icon ion-social-facebook"></i></a><a href="https://github.com/TheMorpheus407"><i class="icon ion-social-github"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="index.html">Home</a></li>
+                <li class="list-inline-item"><a href="login.html">Login</a></li>
+                <li class="list-inline-item"><a href="termsofuse.html">Terms of Use</a></li>
+                <li class="list-inline-item"><a href="privacypolicy.html">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="imprint.html">Imprint</a></li>
+            </ul>
+            <p class="copyright">BATTLE OF AI © 2018</p>
+        </footer>
+    </div>
+    
+        <script src="layout_assets/js/jquery.min.js"></script>
+        <script src="layout_assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="layout_assets/js/bs-animation.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Third party cookie script   --> 
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
 
-  <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
-  <script src="js/jquery.leanModal.min_.js"></script>
-  <script defer src="js/fontawesome506.js"></script>
-
-
-
-<!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/util.js"></script>
-  <script src="js/tokenRefresher.js"></script>
-  <script src="js/login.js"></script>
-  <script>$(document).ready( function (){
-      refreshToken();
-  });
-  </script>
-
-  <script src="js/cookieconsent.min.js"></script>
-  <script>
-      window.addEventListener("load", function(){
-          window.cookieconsent.initialise({
-              "palette": {
-                  "popup": {
-                      "background": "#000",
-                      "text": "#c85d1d"
-                  },
-                  "button": {
-                      "background": "transparent",
-                      "text": "#c85d1d",
-                      "border": "#c85d1d"
-                  }
-              },
-              "position": "bottom-right",
-              "content": {
-                  "message": "This website uses cookies to be able to log you in. If you do not accept cookies, you won't be able to visit all parts of this website.",
-                  "dismiss": "I accept some doom.",
-                  "href": "/privacypolicy.html"
-              }
-          })});
-  </script>
+        <script>
+        window.addEventListener("load", function(){
+        window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+            "background": "#edeff5",
+            "text": "#838391"
+            },
+            "button": {
+            "background": "rgb(31,106,151)"
+            }
+        },
+        "theme": "edgeless",
+        "content": {
+            "message": "This website uses cookies to be able to log you in. If you do not accept cookies, you won't be able to visit all parts of this website.",
+            "dismiss": "I accept some doom.",
+            "href": "privacypolicy.html"
+        }
+        })});
+        </script>
+       <!-- END: Third party cookie script   --> 
 
 </body>
+
 </html>

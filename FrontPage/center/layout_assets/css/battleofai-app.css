@@ -1,0 +1,486 @@
+.battleofai-app-header {
+    background: #292c2f;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 0;
+  }
+  
+  .battleofai-app-header a.navbar-brand.navbar-link {
+    color: #fff;
+    font: normal 28px Cookie, Arial, Helvetica, sans-serif;
+    line-height: 0.5;
+    margin-right: 40px;
+    background: #292c2f;
+  }
+  
+  .battleofai-app-header a.navbar-brand.navbar-link span {
+    color: #bc40df;
+  }
+  
+  .battleofai-app-header ul.nav.navbar-nav.links li a {
+    font: 14px Arial, Helvetica, sans-serif;
+    opacity: 0.9;
+    text-decoration: none;
+    color: #fff;
+    background: #292c2f;
+    border: 0;
+  }
+  
+  .battleofai-app-header ul.nav.navbar-nav li a:hover {
+    opacity: 1;
+  }
+  
+  .battleofai-app-header .badge {
+    position: absolute;
+    top: 4px;
+    border-radius: 2px;
+    font-size: 11px;
+    color: #fff;
+    background-color: #2A6A92;
+    padding: 2px 4px;
+    font-weight: normal;
+  }
+  
+  .battleofai-app-header li.dropdown, .battleofai-app-header li.dropdown.open {
+    background: #3a3c3e;
+  }
+  
+  .battleofai-app-header li.dropdown .dropdown-toggle {
+    border-radius: 2px;
+    color: #fff;
+    padding: 8px 14px;
+    background: #3a3c3e;
+    opacity: 0.9;
+    border: 0;
+    margin: 0;
+  }
+  
+  .battleofai-app-header li.dropdown .dropdown-toggle:focus, .battleofai-app-header li.dropdown .dropdown-toggle:hover, .battleofai-app-header li.dropdown .dropdown-toggle:active {
+    background: #3a3c3e;
+    color: #fff;
+  }
+  
+  .battleofai-app-header ul.nav.navbar-nav.navbar-right .dropdown li a {
+    font: bold 13px Arial, Helvetica, sans-serif;
+  }
+  
+  img.dropdown-image {
+    border-radius: 50%;
+    width: 32px;
+    margin-left: 10px;
+  }
+  
+  .battleofai-app-header .dropdown ul {
+    background-color: #3a3c3e;
+    border: 0;
+    min-width: 140px;
+  }
+  
+  .battleofai-app-header .dropdown ul li {
+    background-color: #3a3c3e;
+    padding: 7px;
+    text-align: center;
+  }
+  
+  .battleofai-app-header .dropdown ul li a {
+    background: #3a3c3e;
+    border-radius: 2px;
+    color: #fff;
+    padding: 0;
+  }
+  
+  .battleofai-app-header .dropdown ul li a:active, .battleofai-app-header .dropdown ul li a:focus, .battleofai-app-header .dropdown ul li a:hover {
+    background: #3a3c3e;
+  }
+  
+  .battleofai-app-header .dropdown ul li.active a {
+    color: #e9ac09 !important;
+  }
+  
+  .breadcrumb {
+    text-align: center;
+    background-color: transparent;
+    border-bottom: 1px solid #eee;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 40px;
+  }
+  
+  nav.navbar.navbar-default {
+    margin-bottom: 0px;
+  }
+  
+  @media (min-width:992px) {
+    .product h2 {
+      margin-top: 0;
+    }
+  }
+  
+  .navbar .navbar-brand {
+    font-size: 24px;
+    line-height: 18px;
+  }
+  
+  .reviewer-name {
+    margin-right: 10px;
+  }
+  
+  .site-footer {
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  @media (min-width:768px) {
+    .site-footer h5 {
+      text-align: left;
+    }
+  }
+  
+  .site-footer h5 {
+    color: inherit;
+    font-size: 16px;
+  }
+  
+  .site-footer .social-icons a:hover {
+    opacity: 1;
+  }
+  
+  .site-footer .social-icons a {
+    display: inline-block;
+    width: 32px;
+    border: none;
+    font-size: 20px;
+    border-radius: 50%;
+    margin: 4px;
+    color: #fff;
+    text-align: center;
+    background-color: #798FA5;
+    height: 32px;
+    opacity: 0.8;
+    line-height: 32px;
+  }
+  
+  @media (min-width:768px) {
+    .site-footer .social-icons {
+      text-align: right;
+    }
+  }
+  
+  .btn.write-review {
+    float: right;
+    margin-top: -6px;
+  }
+  
+  button, select, textarea {
+    text-align: center;
+  }
+  
+  #ipt_quantity {
+    font-size: 22px;
+    font-weight: bold;
+    border-radius: 18px;
+    text-decoration: none;
+  }
+  
+  #videoplayer {
+    align: middle;
+  }
+  
+  .battleofai-app-welcome {
+    color: #fff;
+    background-color: #1e6add;
+    padding: 50px 0;
+  }
+  
+  .battleofai-app-welcome p {
+    color: #c4d5ef;
+    line-height: 1.5;
+  }
+  
+  .battleofai-app-welcome h2 {
+    font-weight: normal;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding-top: 0;
+    margin-top: 0;
+    color: inherit;
+  }
+  
+  .battleofai-app-welcome .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 25px;
+  }
+  
+  .battleofai-app-welcome .buttons {
+    text-align: center;
+  }
+  
+  .battleofai-app-welcome .buttons .btn {
+    padding: 16px 32px;
+    margin: 6px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+  }
+  
+  .battleofai-app-welcome .buttons .btn:hover {
+    opacity: 1;
+  }
+  
+  .battleofai-app-welcome .buttons .btn:active {
+    transform: translateY(1px);
+  }
+  
+  .battleofai-app-welcome .buttons .btn-primary, .battleofai-app-welcome .buttons .btn-primary:active {
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 6px;
+    color: #ebeff1;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 14px 24px;
+    background: transparent;
+    transition: background-color 0.25s;
+  }
+  
+  
+  .battleofai-clean-header {
+   color: #313437;
+   background-color: rgb(249,249,249);
+   height: 230px;
+  }
+  
+  .battleofai-clean-header p {
+    color: #7d8285;
+  }
+  
+  .battleofai-clean-header h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    color: inherit;
+  }
+  
+  @media (max-width:767px) {
+    .battleofai-clean-header h2 {
+      margin-bottom: 25px;
+      padding-top: 25px;
+      font-size: 24px;
+    }
+  }
+  
+  .battleofai-clean-header .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .battleofai-clean-header .intro p {
+    margin-bottom: 0;
+  }
+  
+  
+
+  .battleofai-account {
+    background: #ffffff;
+    padding: 80px 0;
+  }
+  
+  @media (max-width:767px) {
+    .battleofai-account {
+      padding: 20px 0;
+    }
+  }
+  
+  .battleofai-account form {
+    max-width: 480px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 4px;
+    color: #505e6c;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width:767px) {
+    .battleofai-account form {
+      padding: 30px;
+    }
+  }
+  
+  .battleofai-account h2 {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 36px;
+    color: inherit;
+  }
+  
+  .battleofai-account .form-group:last-child {
+    margin-bottom: 5px;
+  }
+  
+  .battleofai-account form .form-control {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.05);
+    outline: none;
+    color: inherit;
+    padding-left: 12px;
+    height: 42px;
+  }
+  
+  .battleofai-account form .form-control:focus {
+    border: 1px solid #b2b2b2;
+  }
+  
+  .battleofai-account form textarea.form-control {
+    min-height: 100px;
+    max-height: 260px;
+    padding-top: 10px;
+    resize: vertical;
+  }
+  
+  .battleofai-account form .btn {
+    padding: 16px 32px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+    outline: none !important;
+  }
+  
+  .battleofai-account form .btn:hover {
+    opacity: 1;
+  }
+  
+  .battleofai-account form .btn:active {
+    transform: translateY(1px);
+  }
+  
+  .battleofai-account form .btn-primary {
+     margin-top: 15px;
+    color: #fff;
+  }
+  
+  .game-list {
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .game-list .game {
+    display: table;
+    height: 35px;
+    width: 100%;
+    padding: 2px;
+  }
+  
+  .game span.icon {
+    float: right;
+    font-size: 20px;
+  }
+  
+  .game span.icon a:hover {
+    opacity: 1;
+  }
+  
+  .icon a, .icon a:focus {
+    text-decoration: none;
+    color: #000;
+    padding: 0 2px;
+    opacity: 0.2;
+  }
+  
+  .game .time {
+    font-weight: bold;
+    padding: 0 10px;
+    width: 68px;
+    font-size: 12px;
+    display: inline-block;
+  }
+  
+  .game .title {
+    padding: 2px 5px;
+    font-size: 18px;
+  }
+  
+  .game:hover {
+    font-weight: bold;
+    background: rgba(70,163,230,0.2);
+  }
+  
+  .game-list-head {
+    width: 100%;
+    padding-top: 10px;
+  }
+  
+  .game-list-head .game-pages {
+    float: right;
+  }
+  
+  .game-pages {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .game-pages .pagination {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .badge {
+    border-radius: 50%;
+    padding: 5px;
+    background: rgb(255,94,3);
+    font-size: 10px;
+    min-width: 10px;
+  }
+  
+  tbody td {
+    border-left: #0b0b0b;
+    border-right: #0b0b0b;
+    border-style: solid;
+    border-width: 1px;
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+}
+
+.core {
+  width: 200px;
+  margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 450px) {
+  .core {
+      zoom: 0.8;
+      -moz-transform: scale(0.8);
+      margin-left: -40px;
+      margin-top: -40px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .core {
+      zoom: 0.6;
+      -moz-transform: scale(0.6);
+      margin-left: -80px;
+      margin-top: -80px;
+  }
+}
