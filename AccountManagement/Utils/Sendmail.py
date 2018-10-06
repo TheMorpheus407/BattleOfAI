@@ -43,7 +43,7 @@ def send_mail(receiver, message, subject):
 
 def send_registration_mail(receiver, email_token):
     message = """Thank you for registering at The Battle Of AI.
-To complete your registration, please go to https://battleofai.net/forgotpassword/link.html?email_token=""" + str(email_token) + """
+To complete your registration, please go to https://battleofai.net/verifyEmail.html?email_token=""" + str(email_token) + """
 If you did not issue this email, please ignore it.
 For more information on privacy policy and terms of use, please refer to https://battleofai.net/
 """
@@ -55,7 +55,7 @@ def send_pwforgot_email(receiver, email_token):
 Did you forget your password? Because you told us so.
 If you did not, ignore this email.
 If you did, here's your link to reset it:
-https://battleofai.net/resetPassword.html?email_token=""" + str(email_token) + """
+https://battleofai.net/forgotpassword/link.html?email_token=""" + str(email_token) + """
 For more information on privacy policy and terms of use, please fo to https://battleofai.net/
 """
     send_mail(receiver, message, 'Password Reset at the Battle of AI')
