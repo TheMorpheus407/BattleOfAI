@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Settings | members@Battle of AI</title>
+    <link rel="stylesheet" href="layout_assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+</head>
+<body>
+        <nav class="navbar navbar-light navbar-expand-md battleofai-app-header">
+                <div class="container-fluid"><a class="navbar-brand" href="#"><span style="margin-left: 0px;font-family: 'News Cycle', sans-serif;color: rgb(253,250,254);">BATTLE OF AI</span>  </a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navbar-collapse">
+                        <ul class="nav navbar-nav links">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="home.html">Dashboard</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="games.html">Recent games</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="statistics.html">Statistics</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="width: 84px;"> <img src="layout_assets/img/boai_user_avatar.png" class="dropdown-image" style="margin-left: 6px;"></a>
+                                <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="settings.html">Profile Settings</a>
+                                    <a class="dropdown-item" role="presentation" href="logout.html">Quit</a>
+                                </div>
+                            </li>
+                        </ul>
+                   </div>
+                </div>
+            </nav>
+    <div class="battleofai-account" style="background-image: url(&quot;layout_assets/img/boai_profile_background.jpg&quot;);height: 800px; background-repeat: none; background-size: cover;">
+        <form id="boai_iam_user_form" method="post" data-aos="zoom-in" data-aos-duration="2000">
+            <h2 class="text-center">Profile Settings</h2>
+            <div class="form-group"><input class="form-control" type="text" name="username" id="username" value="" placeholder="Name" readonly></div>
+            <div class="form-group"><input class="form-control" type="text" name="email" id="email" placeholder="E-Mail"></div>
+            <div class="form-group"><input class="form-control" type="password" name="oldpass"  placeholder="old Password"></div>
+            <div class="form-group"><input class="form-control" type="password" name="newpass" placeholder="new Password"></div>
+            <div class="form-group"><input class="form-control" type="password" name="newpass2"  placeholder="retype Password"></div>
+            <div class="form-group">
+                <div class="form-check"><input class="form-check-input" type="checkbox" id="newsletter" name="newsletter"><label class="form-check-label" for="newsletter">Please send me the newsletter</label></div>
+            </div>
+            <div class="form-group"><button id="save_changes" class="btn btn-primary" type="submit" style="background-color: rgb(31,106,151);">Save Changes</button></div>
+        </form>
+    </div>
+
+
+    <script src="libs/jquery.js"></script>
+    <script src="apis/iam/settings.js"></script>
+    <script src="apis/iam/util.js"></script>
+    <script src="apis/iam/token_refresher.js"></script>
+    <script src="apis/iam/isloggedin.js"></script>
+    <script src="apis/iam/user.js"></script>
+
+    <script src="layout_assets/js/jquery.min.js"></script>
+    <script src="layout_assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="layout_assets/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    
+
+</body>
+
+</html>

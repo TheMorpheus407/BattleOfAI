@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>My Games | members@Battle of AI </title>
+    <link rel="stylesheet" href="layout_assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md battleofai-app-header">
+        <div class="container-fluid"><a class="navbar-brand" href="#"><span style="margin-left: 0px;font-family: 'News Cycle', sans-serif;color: rgb(253,250,254);">BATTLE OF AI</span>  </a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav links">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="home.html">Dashboard</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="games.html">Recent games</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="statistics.html">Statistics</a></li>
+                </ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="width: 84px;"> <img src="layout_assets/img/boai_user_avatar.png" class="dropdown-image" style="margin-left: 6px;"></a>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <a class="dropdown-item" role="presentation" href="settings.html">Profile Settings</a>
+                            <a class="dropdown-item" role="presentation" href="logout.html">Quit</a>
+                        </div>
+                    </li>
+                </ul>
+           </div>
+        </div>
+    </nav>
+    <div class="battleofai-clean-header">
+            <div class="container">
+                <div class="intro">
+                    <h2 class="text-center">Games</h2>
+                    <p class="text-center">Below you can see an overview of all the games, take a closer look with a click on the play icon.</p>
+                </div>
+                      
+            </div>
+        </div>
+    
+        <div class="container">
+                <div class="col-md-12">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group"></div>
+                        </div>
+                    </form>
+                    <div>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" href="#tab-1">Recent games&nbsp;</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                <ul class="game-list" id="gamelist">
+                                 </ul>
+                            </div>
+                            <div class="tab-pane" role="tabpanel" id="tab-2"></div>
+                            <div class="tab-pane" role="tabpanel" id="tab-3"></div>
+                            <div class="tab-pane" role="tabpanel" id="tab-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+<script src="libs/jquery.js"></script>
+<script src="libs/materialize.min.js"></script>
+<script src="libs/Chart.bundle.js"></script>
+
+<script src="apis/iam/settings.js"></script>
+<script src="apis/iam/util.js"></script>
+<script src="apis/iam/isloggedin.js"></script>
+<script src="apis/games/games.js"></script>
+
+<script>$(document).ready(function () {
+        display_all_my_games(getCookie("userid"));
+    });</script>
+    
+
+<script src="layout_assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="layout_assets/js/bs-animation.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+</body>
+
+</html>

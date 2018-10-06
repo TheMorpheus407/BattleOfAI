@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>battleofai</title>
+    <noscript><meta http-equiv="refresh" content="0; URL=nojs.html"></noscript>
+    <link rel="stylesheet" href="layout_assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="layout_assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="layout_assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-globalnav.css">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-account.css">
+    <link rel="stylesheet" href="layout_assets/css/battleofai-footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+</head>
+
+<body>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+                <div class="container"><a class="navbar-brand" href="index.html" style="color: rgb(61,63,65);">BATTLE OF AI&nbsp;</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div
+                        class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Legal&nbsp;</a>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="privacypolicy.html">Privacy Policy</a>
+                                    <a class="dropdown-item" role="presentation" href="termsofuse.html">Terms of Use</a>
+                                    <a class="dropdown-item" role="presentation" href="imprint.html">Imprint</a>
+                                </div>
+                            </li>
+                            <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="login.html">Login&nbsp;</a>
+                                <div class="dropdown-menu" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="login.html">Login with Account</a>
+                                    <a class="dropdown-item" role="presentation" href="forgotpassword/start.html">Reset credentials?</a>
+                                    <a class="dropdown-item" role="presentation" href="signup.html">Start new account</a></div>
+                            </li>
+                        </ul>
+                   </div>
+               </div>
+            </nav>
+
+    <div class="battleofai-account" style="background-color: rgb(0,45,82);background-image: url(&quot;layout_assets/img/profilePageBground.jpg?h=07b822903dd05ae633ab45422e03c138&quot;);margin-top: 80px;height: 800px; ">
+        <form id="boai_iam_user_form" method="post" data-aos="zoom-in" data-aos-duration="2000" style="background-color: #ffffff;padding-top: 40px;margin-top: 30px;">
+            <h2 class="text-center" style="color: rgba(61,63,65,0.83);">Start new account</h2>
+            <div class="form-group">
+                <p>All you have to do is set a username, email and password so you can access the important things later.</p>
+                <input class="form-control" type="text" name="username" placeholder="username" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="email" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password" autocomplete="on" >
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sendUpdates" name="sendUpdates" value="YES">
+                    <label class="form-check-label" for="sendUpdates">
+                    Send me an email if there is something new</label>
+                </div>
+            </div>
+            <div id="do_signup" class="form-group">
+                <button class="btn btn-primary" type="button" style="background-color: rgb(31,106,151);">Let's Go</button> 
+                 <p  style="padding-top: 10px;" id="error_case"></p>
+            </div>
+          
+        </form>
+    </div>
+    <div class="battleofai-footer">
+        <footer>
+           
+            <p class="copyright">BATTLE OF AI © 2018</p>
+        </footer>
+    </div>
+
+    <script src="center/libs/jquery.js"></script>
+    <script src="center/apis/iam/settings.js"></script>
+    <script src="center/apis/iam/util.js"></script>
+    <script src="center/apis/iam/token_refresher.js"></script>
+    <script src="center/apis/iam/signup.js"></script>
+    
+
+    <script src="layout_assets/js/jquery.min.js"></script>
+    <script src="layout_assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="layout_assets/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+
+    <script>$(document).ready( function (){
+        refreshToken();
+    });
+    </script>
+
+ <!-- Third party cookie script   --> 
+ <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+ <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+
+ <script>
+ window.addEventListener("load", function(){
+ window.cookieconsent.initialise({
+ "palette": {
+     "popup": {
+     "background": "#edeff5",
+     "text": "#838391"
+     },
+     "button": {
+     "background": "rgb(31,106,151);"
+     }
+ },
+ "theme": "edgeless",
+ "content": {
+     "message": "This website uses cookies to be able to log you in. If you do not accept cookies, you won't be able to visit all parts of this website.",
+     "dismiss": "I accept some doom.",
+     "href": "privacypolicy.html"
+ }
+ })});
+ </script>
+<!-- END: Third party cookie script   --> 
+</body>
+
+</html>

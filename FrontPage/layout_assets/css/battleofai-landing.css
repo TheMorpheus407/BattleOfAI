@@ -1,0 +1,433 @@
+.battleofai-intro {
+  background: linear-gradient(135deg, #172a74, #21a9af);
+  background-color: #184e8e;
+  padding-bottom: 80px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+@media (min-width:768px) {
+  .battleofai-intro {
+    padding-bottom: 120px;
+    height: 860px;
+  }
+}
+
+.battleofai-intro .navbar {
+  background: transparent;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  color: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+@media (min-width:768px) {
+  .battleofai-intro .navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.battleofai-intro .navbar .navbar-brand {
+  font-weight: bold;
+  color: inherit;
+}
+
+.battleofai-intro .navbar .navbar-brand:hover {
+  color: #f0f0f0;
+}
+
+.battleofai-intro .navbar .navbar-collapse {
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: .5rem;
+}
+
+@media (min-width:768px) {
+  .battleofai-intro .navbar .navbar-collapse {
+    border-color: transparent;
+    margin: 0;
+  }
+}
+
+.battleofai-intro .navbar .navbar-collapse span .login {
+  color: #d9d9d9;
+  margin-right: .5rem;
+  text-decoration: none;
+}
+
+.battleofai-intro .navbar .navbar-collapse span .login:hover {
+  color: #fff;
+}
+
+.battleofai-intro .navbar .navbar-toggler {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.battleofai-intro .navbar .navbar-toggler:hover, .battleofai-intro .navbar-toggler:focus {
+  background: none;
+}
+
+.battleofai-intro .navbar .navbar-nav a.active, .battleofai-intro .navbar .navbar-nav > .show .dropdown-item {
+  background: none;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .battleofai-intro .navbar-nav .nav-link {
+    padding-left: .7rem;
+    padding-right: .7rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .battleofai-intro .navbar-nav .nav-link {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+
+.battleofai-intro .navbar .navbar-nav > li > .dropdown-menu {
+  margin-top: -5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.battleofai-intro .navbar .dropdown-menu .dropdown-item:focus, .battleofai-intro .navbar .dropdown-menu .dropdown-item {
+  line-height: 2;
+  color: #37434d;
+}
+
+.battleofai-intro .navbar .dropdown-menu .dropdown-item:focus, .battleofai-intro .navbar .dropdown-menu .dropdown-item:hover {
+  background: #ebeff1;
+}
+
+.battleofai-intro .action-button, .battleofai-intro .action-button:not(.disabled):active {
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 40px;
+  color: #ebeff1;
+  box-shadow: none;
+  text-shadow: none;
+  padding: .3rem .8rem;
+  background: transparent;
+  transition: background-color 0.25s;
+  outline: none;
+}
+
+.battleofai-intro .action-button:hover {
+  color: #fff;
+}
+
+.battleofai-intro .navbar .form-inline label {
+  color: #d9d9d9;
+}
+
+.battleofai-intro .navbar .form-inline .search-field {
+  display: inline-block;
+  width: 80%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  color: #ccc;
+  box-shadow: none;
+  color: inherit;
+  transition: border-bottom-color 0.3s;
+}
+
+.battleofai-intro .navbar .form-inline .search-field:focus {
+  border-bottom: 1px solid #ccc;
+}
+
+.battleofai-intro .hero {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (min-width:768px) {
+  .battleofai-intro .hero {
+    margin-top: 60px;
+    text-align: left;
+  }
+}
+
+.battleofai-intro .hero h1 {
+  color: #fff;
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+@media (min-width:992px) {
+  .battleofai-intro .hero h1 {
+    margin-top: 190px;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+}
+
+.battleofai-intro .hero p {
+  color: rgba(255,255,255,0.8);
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+.battleofai-intro .phone-holder {
+  text-align: right;
+}
+
+.battleofai-intro div.iphone-mockup {
+  position: relative;
+  max-width: 300px;
+  margin: 20px;
+  display: inline-block;
+}
+
+.battleofai-intro .iphone-mockup img.device {
+  width: 100%;
+  height: auto;
+}
+
+.battleofai-intro .iphone-mockup .screen {
+  position: absolute;
+  width: 88%;
+  height: 77%;
+  top: 12%;
+  border-radius: 2px;
+  left: 6%;
+  border: 1px solid #444;
+  background-color: #aaa;
+  overflow: hidden;
+  background: url(screen-content-iphone-6.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.battleofai-intro .iphone-mockup .screen:before {
+  content: '';
+  background-color: #fff;
+  position: absolute;
+  width: 70%;
+  height: 140%;
+  top: -12%;
+  right: -60%;
+  transform: rotate(-19deg);
+  opacity: 0.2;
+}
+
+.battleofai-promo {
+  color: #313437;
+  background-color: #fff;
+}
+
+.battleofai-promo p {
+  color: #7d8285;
+}
+
+.battleofai-promo h2 {
+  font-weight: bold;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  color: inherit;
+}
+
+@media (max-width:767px) {
+  .battleofai-promo h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+.battleofai-promo .intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.battleofai-promo .intro p {
+  margin-bottom: 0;
+}
+
+.battleofai-promo .articles {
+  padding-bottom: 40px;
+}
+
+.battleofai-promo .item {
+  padding-top: 50px;
+  min-height: 425px;
+  text-align: center;
+}
+
+.battleofai-promo .item .name {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 20px;
+  color: inherit;
+}
+
+.battleofai-promo .item .description {
+  font-size: 14px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.battleofai-promo .item .action {
+  font-size: 24px;
+  width: 24px;
+  margin: 22px auto 0;
+  line-height: 1;
+  display: block;
+  color: #4f86c3;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.battleofai-promo .item .action:hover {
+  opacity: 1;
+}
+
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle;
+}
+
+audio, canvas, img, video {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+img {
+  border-style: none;
+}
+
+
+.battleofai-readytostart {
+  color: #fff;
+  background-color: #1e6add;
+  padding: 50px 0;
+}
+
+.battleofai-readytostart p {
+  color: #c4d5ef;
+  line-height: 1.5;
+}
+
+.battleofai-readytostart h2 {
+  font-weight: normal;
+  margin-bottom: 25px;
+  line-height: 1.5;
+  padding-top: 0;
+  margin-top: 0;
+  color: inherit;
+}
+
+.battleofai-readytostart .intro {
+  font-size: 16px;
+  max-width: 500px;
+  margin: 0 auto 25px;
+}
+
+.battleofai-readytostart .buttons {
+  text-align: center;
+}
+
+.battleofai-readytostart .buttons .btn {
+  padding: 16px 32px;
+  margin: 6px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  text-shadow: none;
+  opacity: 0.9;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+.battleofai-readytostart .buttons .btn:hover {
+  opacity: 1;
+}
+
+.battleofai-readytostart .buttons .btn:active {
+  transform: translateY(1px);
+}
+
+.battleofai-readytostart .buttons .btn-primary, .battleofai-readytostart .buttons .btn-primary:active {
+  border: 2px solid rgba(255,255,255,0.7);
+  border-radius: 6px;
+  color: #ebeff1;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 14px 24px;
+  background: transparent;
+  transition: background-color 0.25s;
+}
+
+.battleofai-footer {
+  padding: 40px 0;
+  background-color: #ffffff;
+  color: #4b4c4d;
+}
+
+.battleofai-footer ul {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.battleofai-footer li {
+  padding: 0 10px;
+}
+
+.battleofai-footer ul a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.battleofai-footer ul a:hover {
+  opacity: 1;
+}
+
+.battleofai-footer .social {
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.battleofai-footer .social > a {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  margin: 0 8px;
+  color: inherit;
+  opacity: 0.75;
+}
+
+.battleofai-footer .social > a:hover {
+  opacity: 0.9;
+}
+
+.battleofai-footer .copyright {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 0;
+}
+

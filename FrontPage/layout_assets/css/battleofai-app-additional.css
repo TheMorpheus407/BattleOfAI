@@ -1,0 +1,160 @@
+.battleofai-welcomeback {
+    color: #fff;
+    background-color: #1e6add;
+    padding: 50px 0;
+  }
+  
+  .battleofai-welcomeback p {
+    color: #c4d5ef;
+    line-height: 1.5;
+  }
+  
+  .battleofai-welcomeback h2 {
+    font-weight: normal;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    padding-top: 0;
+    margin-top: 0;
+    color: inherit;
+  }
+  
+  .battleofai-welcomeback .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 25px;
+  }
+  
+  .battleofai-welcomeback .buttons {
+    text-align: center;
+  }
+  
+  .battleofai-welcomeback .buttons .btn {
+    padding: 16px 32px;
+    margin: 6px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-shadow: none;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    line-height: 1;
+  }
+  
+  .battleofai-welcomeback .buttons .btn:hover {
+    opacity: 1;
+  }
+  
+  .battleofai-welcomeback .buttons .btn:active {
+    transform: translateY(1px);
+  }
+  
+  .battleofai-welcomeback .buttons .btn-primary, .battleofai-welcomeback .buttons .btn-primary:active {
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 6px;
+    color: #ebeff1;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 14px 24px;
+    background: transparent;
+    transition: background-color 0.25s;
+  }
+  
+  
+  .battleofai-statistics {
+    color: #313437;
+    background-color: #eef4f7;
+  }
+  
+  .battleofai-statistics p {
+    color: #7d8285;
+  }
+  
+  .battleofai-statistics h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    color: inherit;
+  }
+  
+  @media (max-width:767px) {
+    .battleofai-statistics h2 {
+      margin-bottom: 25px;
+      padding-top: 25px;
+      font-size: 24px;
+    }
+  }
+  
+  .battleofai-statistics .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .battleofai-statistics .intro p {
+    margin-bottom: 0;
+  }
+  
+  .battleofai-statistics .statistics {
+    padding: 50px 0 20px;
+  }
+  
+  .battleofai-statistics .item {
+    margin-bottom: 32px;
+  }
+  
+  @media (min-width:768px) {
+    .battleofai-statistics .item {
+      height: 220px;
+    }
+  }
+  
+  .battleofai-statistics .item .box {
+    padding: 30px;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .battleofai-statistics .item .box:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -24px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-width: 12px 15px;
+    border-top-color: #fff;
+  }
+  
+  .battleofai-statistics .item .author {
+    margin-top: 28px;
+    padding-left: 25px;
+  }
+  
+  .battleofai-statistics .item .name {
+    font-weight: bold;
+    margin-bottom: 2px;
+    color: inherit;
+  }
+  
+  .battleofai-statistics .item .title {
+    font-size: 13px;
+    color: #9da9ae;
+  }
+  
+  .battleofai-statistics .item .description {
+    font-size: 15px;
+    margin-bottom: 0;
+  }
+  
+  .battleofai-statistics .item img {
+    max-width: 40px;
+    float: left;
+    margin-right: 12px;
+    margin-top: -5px;
+  }
+  
+  
