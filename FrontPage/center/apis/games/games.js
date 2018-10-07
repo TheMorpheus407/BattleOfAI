@@ -1,5 +1,6 @@
 function display_all_my_games(userid) {
-
+    loading = "<h1 id='loading_games'>Loading games..</h1>";
+    $("#gamelist").append(loading);
 
     let my_url = get_games_url() + 'api/games/?user_ids='+userid;
     $.ajax({url:my_url,
@@ -12,9 +13,11 @@ function display_all_my_games(userid) {
     });
 }
 function display_all_games(data) {
+    data["games"] = data["games"].reverse()
     for (let i = 0; i < data["games"].length; i++){
         display_game(data["games"][i]["id"]);
     }
+    $("#loading_games").remove()
 }
 
 function display_game(game_id) {
@@ -23,6 +26,7 @@ function display_game(game_id) {
         type:"get",
         contentType:"application/json; charset=utf-8",
         cache: false,
+        async: false,
         success: function (data, status, xhr) {
 
            game_text = "<li class='game'><span class='time'>"+ data['id'] + "</span><span class='title'>"+ data['game_name'] + "</span><span class='icon'> <a href='game.html?id="+ data['id'] + "' class='flag'><i class='fa fa-play-circle'></i></a></span></li>";
