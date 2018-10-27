@@ -20,8 +20,8 @@ function display_game(game_ids) {
         contentType: "application/json; charset=utf-8",
         cache: false,
         success: function (data, status, xhr) {
-            console.log(current, data); //TODO do something with the data
-            if (game_ids.length > 0) display_game(game_ids);
+            game_text = "<li class='game'><span class='time'>"+ data['id'] + "</span><span class='title'>"+ data['game_name'] + "</span><span class='icon'> <a href='game.html?id="+ data['id'] + "' class='flag'><i class='fa fa-play-circle'></i></a></span></li>";
+            $("#gamelist").append(game_text);
         }
     });
 }
