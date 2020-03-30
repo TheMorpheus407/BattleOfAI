@@ -1,3 +1,4 @@
+import json
 import time
 from enum import Enum
 
@@ -67,7 +68,8 @@ class BOAIapi:
         self.log("_login", "Logged in successfully as", self.username + " (ID: " + str(userid) + ")")
         return userid, token
 
-    def get_games(self, own=False, game_state=GameState.WAITING, user_id=None):
+    def get_games(self, own=False, game_state=GameState.WAITING, user_id=None, game_name="Core"):
+        # game_name defaults to "Core" for legacy support
         addition = ("&user_ids=" + str(self.player_id)) if own else ""
         if user_id is not None:
             assert own is False, "Can't use specified user_id and own=True at the same time."
@@ -76,26 +78,27 @@ class BOAIapi:
             r = []
             for gs in GameState:
                 if gs != GameState.ANY and gs != GameState.ANY_DICT:
-                    r += self.get_games(own=own, game_state=gs, user_id=user_id)
+                    r += self.get_games(own=own, game_state=gs, user_id=user_id, game_name=game_name)
             return r
         elif game_state == GameState.ANY_DICT:
             r = {}
             for gs in GameState:
                 if gs != GameState.ANY and gs != GameState.ANY_DICT:
-                    r[gs.value] = self.get_games(own=own, game_state=gs, user_id=user_id)
+                    r[gs.value] = self.get_games(own=own, game_state=gs, user_id=user_id, game_name=game_name)
             return r
         else:
-            url = f"{self.games_api_url}games/?game_state={game_state.value}&game_name=Core{addition}"
+            url = f"{self.games_api_url}games/?game_state={game_state.value}&game_name={game_name}{addition}"
             self.log("get_games", url, requirement=2)
             raw_matches = requests.get(url).json()["games"]
             return list(k["id"] for k in raw_matches)
 
-    def create_game(self):
+    def create_game(self, game_name="Core"):
         """
         creates a game and returns the game id
+        :param game_name: the game name, defaults to "Core" for legacy support
         :return: the game id
         """
-        resp = requests.post(self.games_api_url + "games/createGame", json={"game_name": "Core"})
+        resp = requests.post(self.games_api_url + "games/createGame", json={"game_name": game_name})
         assert resp.status_code == 200
         return int(resp.text)
 
@@ -111,6 +114,7 @@ class BOAIapi:
 
     @staticmethod
     def get_symbol(active_player):
+        # only for "Core" games
         return 'XO'[active_player]
 
     def check_and_update_token(self):
@@ -152,7 +156,7 @@ class BOAIapi:
         participants = list(k["id"] for k in self.status(game_id)["players"])
 
         assert participants, "[BOAIapi] assert_basics: You weren't registered for the game?"
-        assert game_info["game_name"] == "Core", "[BOAIapi] assert_basics: Wrong game mode?"
+        assert game_info["game_name"] in ["Core", "Abalone"], "[BOAIapi] assert_basics: Wrong game mode?"
         assert game_info["id"] == game_id, "[BOAIapi] assert_basics: You weren't in the correct game?"
         assert game_info["game_state"] == "STARTED", "[BOAIapi] assert_basics: Tried playing in a not yet started game?"
         assert game_info["open_slots"] == 0, "[BOAIapi] assert_basics: Game ist not full?"
@@ -168,7 +172,10 @@ class BOAIapi:
         """
         if game_status is None:
             game_status = self.status(game_id)
+        if game_status["game_state"] != "STARTED":
+            return False
         return game_status["players"][game_status["active_player"]]["id"] == self.player_id
+
 
     def participants(self, game_id, game_status=None) -> list:
         """
@@ -183,13 +190,20 @@ class BOAIapi:
             game_status = self.status(game_id)
         return list(k["id"] for k in game_status["players"])
 
+
     def make_move(self, game_id, x, y):
+        """DEPRECATED: Use make_turn"""
+        self.make_turn(game_id, [x, y])
+
+
+    def make_turn(self, game_id, turn):
         status_code = 401
         while status_code == 401:
-            data = {"player": {"id": self.player_id, "token": self.token}, "turn": str([y, x])}
+            data = {"player": {"id": self.player_id, "token": self.token}, "turn": json.dumps(turn)}
             resp = requests.post(self.games_api_url + "games/" + str(game_id) + "/makeTurn", json=data)
             self.check_and_update_token()
             status_code = resp.status_code
+
 
     def handle_available(self, game_ids=None):
         """
@@ -211,14 +225,49 @@ class BOAIapi:
         for game_id in game_ids:
             game_status = self.status(game_id)
             if self.is_my_turn(game_id, game_status=game_status):
-                self.log("handle_available", "Handling", game_id)
-                pos_x, pos_y = self.func(game_status['history'][-1]['board'],
-                                         BOAIapi.get_symbol(game_status["active_player"]))
-                self.log("handle_available", "Moving to (" + str(pos_x) + ", " + str(pos_y) + ")")
-                self.make_move(game_id, pos_x, pos_y)
+                game_name = game_status['game_name']
+                self.log("handle_available", "Handling", game_id, game_name)
+                if game_name == "Core":
+                    pos_x, pos_y = self.func(game_status['history'][-1]['board'],
+                                             BOAIapi.get_symbol(game_status["active_player"]))
+                    self.log("handle_available", "Moving to (" + str(pos_x) + ", " + str(pos_y) + ")")
+                    self.make_turn(game_id, [pos_x, pos_y])
+                elif game_name == "Abalone":
+                    # deserialize game
+                    from enums import Marble
+                    from game import Game
+                    from copy import deepcopy
+                    board = deepcopy(game_status["history"][-1]["board"])
+                    for row in range(len(board)):
+                        for col in range(len(board[row])):
+                            board[row][col] = Marble[board[row][col]]
+                    game = Game()
+                    game.board = board
+                    if game_status["active_player"] == 1:
+                        game.switch_player()
+
+                    # TODO: moves_history is unsupported by API
+                    moves_history = None
+
+                    marbles, direction = self.func(game, moves_history)
+                    turn = {}
+                    if isinstance(marbles, tuple):
+                        turn["marble1"] = marbles[0].name
+                        turn["marble2"] = marbles[1].name
+                        marbles_str = f"({turn['marble1']}, {turn['marble2']})"
+                        move_type = "(broadside)"
+                    else:
+                        turn["marble1"] = marbles.name
+                        marbles_str = turn["marble1"]
+                        move_type = "(in-line)"
+                    turn["direction"] = direction.name
+
+                    self.log("handle_available", f"Moving {marbles_str} in direction {turn['direction']} {move_type}")
+                    self.make_turn(game_id, turn)
             else:
                 self.log("handle_available", "Handled", game_id, "(Not your turn)")
         self.log("handle_available", "Done handling available")
+
 
     def match(self, user_id, mode: MatchMethod = MatchMethod.JOIN, force_chosen_game_id=None):
         """
