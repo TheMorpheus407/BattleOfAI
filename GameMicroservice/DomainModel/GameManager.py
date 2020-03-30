@@ -4,6 +4,7 @@ from GameMicroservice.DomainModel.GameState import GameState
 
 from GameMicroservice.DomainModel.GameInstance import GameInstance
 from GameMicroservice.CoRe.CoReInstance import CoReInstance
+from GameMicroservice.Abalone.AbaloneInstance import AbaloneInstance
 
 
 def create_game(game_name):
@@ -14,6 +15,10 @@ def create_game(game_name):
     elif game_name == CoReInstance.GAME_NAME:
         game = create_gamedto(game_name)
         game_instance = CoReInstance(game.id, game_dto=game)
+        return game.id
+    elif game_name == AbaloneInstance.GAME_NAME:
+        game = create_gamedto(game_name)
+        game_instance = AbaloneInstance(game.id, game_dto=game)
         return game.id
     return 0
 
@@ -27,6 +32,8 @@ def load_from_json(id):
         return GameInstance.load_from_json(id)
     elif game_name == CoReInstance.GAME_NAME:
         return CoReInstance.load_from_json(id)
+    elif game_name == AbaloneInstance.GAME_NAME:
+        return AbaloneInstance.load_from_json(id)
     return None
 
 
