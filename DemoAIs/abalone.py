@@ -5,8 +5,8 @@
 import time
 from random import choice
 
-# Make sure the abalone module is available
-from abstract_player import AbstractPlayer
+# Make sure "abalone-boai" (https://pypi.org/project/abalone-boai/) is installed
+from abalone.abstract_player import AbstractPlayer
 
 from DemoAIs.BOAIapi import BOAIapi
 

@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import sys
 from copy import deepcopy
 
 from GameMicroservice.DomainModel.GameInstance import GameInstance
 
-sys.path.insert(0, '/app/GameMicroservice/Abalone/Abalone-BoAI/abalone')
-
-from enums import Direction, Marble, Space
-from game import Game, IllegalMoveException
+from abalone.enums import Direction, Marble, Space
+from abalone.game import Game, IllegalMoveException
 
 
 def _vars_to_move_args(vars):

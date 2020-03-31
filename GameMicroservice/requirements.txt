@@ -5,3 +5,4 @@ Flask_Cors==3.0.6
 requests==2.19.1
 pymysql
 colorama
+abalone-boai

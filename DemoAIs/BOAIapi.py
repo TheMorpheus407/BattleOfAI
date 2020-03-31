@@ -234,8 +234,8 @@ class BOAIapi:
                     self.make_turn(game_id, [pos_x, pos_y])
                 elif game_name == "Abalone":
                     # deserialize game
-                    from enums import Marble
-                    from game import Game
+                    from abalone.enums import Marble
+                    from abalone.game import Game
                     from copy import deepcopy
                     board = deepcopy(game_status["history"][-1]["board"])
                     for row in range(len(board)):
