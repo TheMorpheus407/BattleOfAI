@@ -1,9 +1,9 @@
-flask_restplus
-Flask
-Flask_SQLAlchemy
-Flask_Cors
-requests
+flask_restplus==0.11.0
+Flask==1.0.2
+Flask_SQLAlchemy==2.3.2
+Flask_Cors==3.0.6
+requests==2.20.0
 pymysql
 colorama
 abalone-boai
-Werkzeug
+Werkzeug==0.16.1
