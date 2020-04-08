@@ -8,6 +8,7 @@ This is the Battle of AIs source code. It's a REST-Service and as modern as I ma
 
 Currently supported:
   - CoRe, Computer Reversi. Visit https://github.com/ac1235/core for more
+  - Abalone. Visit <https://github.com/Scriptim/Abalone-BoAI> for more
   - More coming soon.
 
 ### Tech
