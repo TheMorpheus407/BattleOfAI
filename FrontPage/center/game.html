@@ -34,123 +34,23 @@
     <div class="battleofai-clean-header" style="height: 140px">
             <div class="container">
                 <div class="intro">
-                    <h2 class="text-center">Core Game Viewer</h2>       
+                    <h2 id="game-viewer-heading" class="text-center">Game Viewer</h2>       
                 </div>
             </div>
         </div>
         <div class="container" style="padding-top: 20px">
-                <div class="row">
-                        <div class="container" style="width: 410px;   margin: auto;">
+                <div class="row" style="text-align: center">
+                        <div id="game-container" class="container" style="display: inline-block">
                              
                                 <div class="table-responsive">
-                                  
-                                    <div id="core">
-                                    
-                                        <table class="table table-bordered active-game"  id="core-0">
-                                           
-                                        <thead>
-                                            <tr>
-                                                <th>1</th>
-                                                <th>2</th>
-                                                <th>3</th>
-                                                <th>4</th>
-                                                <th>5</th>
-                                                <th>6</th>
-                                                <th>7</th>
-                                                <th>8</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id='core-game-content'>
-                                        
-                                            <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr>
-                                                
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr></tr>
-                                        </tbody>
-                                    </table>
-                                    
-                                </div>
+
+                                    <div id="game">
+                                        <p>Lädt...</p>
+                                    </div>
+
                                 </div>
                                 
-                                <button  style="border-style: none; background-color: rgb(31,106,151); margin-right: 5px;margin-left: 5px;" onClick="back();" class="btn btn-primary" type="button" >&lt;</button><button  style="border-style: none; background-color: rgb(31,106,151);" onClick="forward();"  class="btn btn-primary" type="button">&gt;</button>
+                                <button style="border-style: none; background-color: rgb(31,106,151); margin-right: 5px;margin-left: 5px;" id="btn-back" class="btn btn-primary" type="button" >&lt;</button><button style="border-style: none; background-color: rgb(31,106,151);" id="btn-forward" class="btn btn-primary" type="button">&gt;</button>
                         </div>
                    </div>
 

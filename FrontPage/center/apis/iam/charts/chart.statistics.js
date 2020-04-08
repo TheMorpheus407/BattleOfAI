@@ -9,16 +9,29 @@ $(function () {
         purple: 'rgb(153, 102, 255)',
         grey: 'rgb(201, 203, 207)'
     };
-    var x = document.getElementById("core-stats");
-    var config = {
+
+    window.pies = {
+        "core": new Chart(
+            document.getElementById("chart-area-core").getContext("2d"),
+            createConfig(document.getElementById("core-stats"))
+        ),
+        "abalone": new Chart(
+            document.getElementById("chart-area-abalone").getContext("2d"),
+            createConfig(document.getElementById("abalone-stats"))
+        )
+    };
+});
+
+function createConfig(statsEl) {
+    return config = {
         type: 'pie',
         data: {
             datasets: [{
-                data: [x.getAttribute("data-wins"),
-                x.getAttribute("data-losses")],
+                data: [statsEl.getAttribute("data-wins"),
+                statsEl.getAttribute("data-losses")],
                 backgroundColor: [window.chartColors.green,
                 window.chartColors.red],
-                label: x.getAttribute("data-username")
+                label: statsEl.getAttribute("data-username")
             }],
             labels: [
                 "wins", "losses"
@@ -26,10 +39,7 @@ $(function () {
         },
         options: {
             responsive: true,
-            title: {text: x.getAttribute("data-username"),display: true}
+            title: { text: statsEl.getAttribute("data-username"), display: true }
         }
     };
-    var canvas = document.getElementById("chart-area").getContext("2d");
-    var chart = new Chart(canvas, config);
-    window.myPie = chart;
-});
+}
